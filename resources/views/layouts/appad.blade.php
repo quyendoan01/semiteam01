@@ -27,7 +27,7 @@
         <nav class="navbar navbar-expand-md navbar-light" style="padding:0px">
             <div class="container-fluid">
                 <a class="logo" href="{{ url('/') }}">
-                    Logo
+                    semi
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
