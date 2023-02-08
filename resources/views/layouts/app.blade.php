@@ -17,7 +17,7 @@
 
     <link href="{{ URL::asset('css/app.css') }} " rel="stylesheet" type="text/css" media="all">
 
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/js/app.js'])
 </head>
 <body>
     <div id="app">

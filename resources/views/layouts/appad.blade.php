@@ -19,7 +19,7 @@
     <link href="{{ URL::asset('css/app.css') }} " rel="stylesheet" type="text/css" media="all">
     <script src="{{ URL::asset('js/app.js') }}"></script>
 
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/js/app.js'])
 </head>
 
 <body>
@@ -27,7 +27,7 @@
         <nav class="navbar navbar-expand-md navbar-light" style="padding:0px">
             <div class="container-fluid">
                 <a class="logo" href="{{ url('/') }}">
-                    Logo
+                    semi
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -85,10 +85,10 @@
         <main class="py-0" style="">
             <div class="vertical-menu">
                 <a href="#" class="active">Home</a>
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-                <a href="#">Link 4</a>
+                <a href="#">Quản lý sản phẩm</a>
+                <a href="#">Quản lý người dùng</a>
+                <a href="#">Loại sản phẩm</a>
+                <a href="#">Quản lý hóa đơn</a>
             </div>
             @yield('content')
             <div style="float: left;">
