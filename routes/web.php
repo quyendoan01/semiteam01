@@ -16,8 +16,8 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('index', function () {
+    return view('index');
 });
 
 Auth::routes();
@@ -26,6 +26,3 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::get('/register', [UserController::class, 'register'])->name('register');
 //Route::get('/logout', [UserController::class, 'logout'])->name('logout');
-
-
-
