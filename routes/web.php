@@ -26,5 +26,10 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::get('/register', [UserController::class, 'register'])->name('register');
 Route::get('/product', [UserController::class, 'product'])->name('product');
+Route::get('/staff', [UserController::class, 'staff'])->name('staff');
+Route::get('/add_account', [UserController::class, 'add_account'])->name('add_account');
+
+
+
 
 //Route::get('/logout', [UserController::class, 'logout'])->name('logout');

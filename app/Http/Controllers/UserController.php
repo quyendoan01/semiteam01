@@ -27,5 +27,12 @@ class UserController extends Controller
         return view('product');
     }
 
+    public function staff(){
+        return view('staff');
+    }
+
+    public function add_account(){
+        return view('add_account');
+    }
 
 }

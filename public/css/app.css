@@ -33,6 +33,31 @@ body {
     background: #555;
 }
 
-@media (max-width:764px) {}
+@media (max-width:764px) {
+    /*For mobile*/
+}
 
-@media (min-width:765px) {}
+@media (min-width:765px) {
+    /*For desktop*/
+    .mng_staff {
+        display: block;
+        height: 100%;
+        width: 100%;
+    }
+    .add_staff {
+        float: right;
+        display: block;
+        margin: 16px;
+    }
+    .acc_table {
+        background-color: #f1f1f1;
+        border-radius: 12px;
+        align-content: center;
+        text-align: center;
+    }
+    .add_account {
+        margin: 32px 160px;
+        background-color: #f1f1f1;
+        border-radius: 12px;
+    }
+}
