@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pro-bill', function (Blueprint $table) {
-            $table->id();
+        Schema::create('role', function (Blueprint $table) {
+            $table->id()->index();
+            $table->string('role_name');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pro-bill');
+        Schema::dropIfExists('role');
     }
 };

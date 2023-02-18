@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('type', function (Blueprint $table) {
+        Schema::create('permission', function (Blueprint $table) {
             $table->id();
+            $table->string('per_name');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type');
+        Schema::dropIfExists('permission');
     }
 };

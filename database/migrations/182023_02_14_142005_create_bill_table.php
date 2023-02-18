@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('category', function (Blueprint $table) {
+        Schema::create('bill', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('type_id')->constrained('type');
+            $table->date('bill_payment');
+            $table->foreignId('cus_id')->constrained('customer');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category');
+        Schema::dropIfExists('bill');
     }
 };

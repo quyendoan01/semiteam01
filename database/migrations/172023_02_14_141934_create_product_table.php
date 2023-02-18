@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('product', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('cat_id')->constrained('category');
+            $table->string('pro_name');
+            $table->string('unit_price');
+            $table->integer('pro_quantity')->default(0);
+            $table->string('pro_origin')->nullable();
             $table->timestamps();
         });
     }
