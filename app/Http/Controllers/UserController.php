@@ -26,6 +26,9 @@ class UserController extends Controller
     public function product(){
         return view('product');
     }
+    public function add_product(){
+        return view('add_product');
+    }
 
     public function staff(){
         return view('staff');
@@ -34,5 +37,6 @@ class UserController extends Controller
     public function add_account(){
         return view('add_account');
     }
+
 
 }

@@ -1,6 +1,7 @@
 @extends('layouts.appad')
 
 @section('content')
+    <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
         data-scroll="false">
         <div class="container-fluid py-1 px-3">
@@ -20,7 +21,7 @@
                 </div>
                 <ul class="navbar-nav  justify-content-end">
                     <li class="nav-item d-flex align-items-center">
-                        <a href=" {{ url('login') }} " class="nav-link text-white font-weight-bold px-0">
+                        <a href="{{ url('login') }}" class="nav-link text-white font-weight-bold px-0">
                             <i class="fa fa-user me-sm-1"></i>
                             <span class="d-sm-inline d-none">Sign In</span>
                         </a>
@@ -132,34 +133,40 @@
                 <form method="POST" action="" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Full Name</label>
+                        <label for="exampleFormControlInput1">ID</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1"
-                            placeholder="Full Name of new Staff">
+                            placeholder="ID of Product">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <label for="exampleInputEmail1" class="form-label"> Name </label>
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="example@exam.pel">
+                            placeholder="Name of product">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">User Name</label>
+                        <label for="exampleFormControlInput1"> Price</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1"
-                            placeholder="User Name of new Staff">
+                            placeholder="Price of product">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Address</label>
+                        <label for="exampleFormControlInput1">Investment</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1"
-                            placeholder="Address of new Staff">
+                            placeholder="Investment of product">
                     </div>
 
                     <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
+                        <label for="exampleInputPassword1" class="form-label">Quantity </label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1"
+                            placeholder="Quantity of product">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Detail </label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1"
+                            placeholder="Detail of product">
                     </div>
 
                     <div class="mb-3">
                         <button type="submit" class="btn btn-primary">Add
-                            account</button>
+                            Product</button>
                     </div>
                 </form>
             </div>
