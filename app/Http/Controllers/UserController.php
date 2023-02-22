@@ -34,5 +34,10 @@ class UserController extends Controller
     public function add_account(){
         return view('add_account');
     }
-
+    public function user_inf(){
+        return view('user_information');
+    }
+    public function bill(){
+        return view('bill');
+    }
 }
