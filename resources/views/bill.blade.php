@@ -128,15 +128,7 @@
     </nav>
     <div class="container-fluid">
         <div class="bill_list">
-            <div class="btn-group">
-                <label class="bill_fill_label">Sort by</label>
-                <select name="cars" id="cars">
-                    <option value="volvo">Date</option>
-                    <option value="saab">Value</option>
-                    <option value="opel">Customer</option>
-                    <option value="audi">Type</option>
-                </select>
-            </div>
+                <button class="add_bill_btn btn btn-secondary">Add new bill</button>
             <table class="bill_table table">
                 <thead>
                     <tr>

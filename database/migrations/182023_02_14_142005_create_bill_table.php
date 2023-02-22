@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('bill', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('type_id')->constrained('type');
+            $table->boolean('type');
             $table->date('bill_payment');
             $table->foreignId('cus_id')->constrained('customer');
             $table->foreignId('user_id')->constrained('users');

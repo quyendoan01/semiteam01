@@ -17,6 +17,10 @@
 
     <link href="{{ URL::asset('css/app.css') }} " rel="stylesheet" type="text/css" media="all">
 
+    <link id="pagestyle" href="{{ asset('css/app.css') }}" rel="stylesheet" />
+    <link id="pagestyle" href="{{ asset('css/argon-dashboard.css?v=2.0.4') }}" rel="stylesheet" />
+    {{-- <link id="pagestyle" href="{{ asset('css/login.css') }}" rel="stylesheet" /> --}}
+
     @vite(['resources/js/app.js'])
 </head>
 <body>

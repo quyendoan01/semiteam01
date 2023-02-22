@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('user_email')->unique();
             $table->string('user_password');
             $table->string('user_avt')->nullable();
-            $table->foreignId('role_id')->constrained('role');
+            $table->string('roll_name');
             $table->rememberToken();
             $table->timestamps();
 

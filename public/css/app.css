@@ -92,8 +92,7 @@ body {
         display: block;
         margin: 12px 0px;
     }
-    .bill_fill_label {
-        margin: 8px;
-        font-size: 0.9em;
+    .add_bill_btn {
+        float: right;
     }
 }

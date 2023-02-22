@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user-per', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('per_id')->constrained('permission');
+        Schema::create('image', function (Blueprint $table) {
+            $table->id();
+            $table->string('img_infor');
+            $table->foreignId('pro_id')->constrained('product');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user-per');
+        Schema::dropIfExists('image');
     }
 };
