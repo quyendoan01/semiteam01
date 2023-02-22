@@ -128,7 +128,7 @@
     </nav>
     <div class="container-fluid">
         <div class="bill_list">
-                <button class="add_bill_btn btn btn-secondary">Add new bill</button>
+                <a href="{{url('add_bill')}}"><button class="add_bill_btn btn btn-secondary">Add new bill</button></a>
             <table class="bill_table table">
                 <thead>
                     <tr>

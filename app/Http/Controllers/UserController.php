@@ -40,4 +40,7 @@ class UserController extends Controller
     public function bill(){
         return view('bill');
     }
+    public function add_bill(){
+        return view('add_bill');
+    }
 }

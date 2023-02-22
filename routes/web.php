@@ -30,6 +30,7 @@ Route::get('/staff', [UserController::class, 'staff'])->name('staff');
 Route::get('/add_account', [UserController::class, 'add_account'])->name('add_account');
 Route::get('/user_inf', [UserController::class, 'user_inf'])->name('user_inf');
 Route::get('/bill', [UserController::class, 'bill'])->name('bill');
+Route::get('/add_bill', [UserController::class, 'add_bill'])->name('add_bill');
 
 
 //Route::get('/logout', [UserController::class, 'logout'])->name('logout');
