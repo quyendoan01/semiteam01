@@ -47,7 +47,7 @@
         <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                 aria-hidden="true" id="iconSidenav"></i>
-            <a class="navbar-brand m-0" href=" {{url('/')}} ">
+            <a class="navbar-brand m-0" href=" {{ url('/') }} ">
                 <img src="https://fpt.edu.vn/Content/images/assets/Logo-Btec.png" alt="main_logo">
                 <span class="ms-1 font-weight-bold"> &nbsp; Semi Project T1</span>
             </a>
@@ -56,7 +56,7 @@
         <div class="collapse navbar-collapse  w-auto" id="sidenav-collapse-main" style="min-height:450px">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href=" {{url('/')}} ">
+                    <a class="nav-link active" href=" {{ url('/') }} ">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fa fa-home text-primary text-sm opacity-10"></i>
@@ -92,7 +92,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="{{ url('staff')}}">
+                    <a class="nav-link " href="{{ url('staff') }}">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fa fa-address-book-o text-danger text-sm opacity-10"></i>
@@ -100,6 +100,7 @@
                         <span class="nav-link-text ms-1">Staff</span>
                     </a>
                 </li>
+
                 <li class="nav-item mt-3">
                     <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Contact</h6>
                 </li>
