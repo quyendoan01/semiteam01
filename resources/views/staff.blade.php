@@ -129,50 +129,54 @@
 
     <div class="container-fluid">
         <div class="mng_staff">
+
             <a href="{{ url('add_account') }}"> <button style="" type="button"
                     class="add_staff btn btn-secondary">Add account</button>
             </a>
+            @if (session('success'))
+                <span class="alert alert-success" style="float:right; margin:2px">
+                    <strong>{{ session('success') }}</strong>
+                </span>
+            @endif
+            @if (session('danger'))
+                <span class="alert alert-danger" style="float:right; margin:2px">
+                    <strong>{{ session('danger') }}</strong>
+                </span>
+            @endif
         </div>
         <table class="acc_table table table-striped">
             <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Username</th>
-                <th scope="col">Fullname</th>
-                <th scope="col">Email</th>
-                <th scope="col">Address</th>
-                <th scope="col"></th>
-              </tr>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Fullname</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Role</th>
+                    <th scope="col"></th>
+                </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="col">1</th>
-                <td scope="col">usn1</td>
-                <td scope="col">fname1</td>
-                <td scope="col">email1</td>
-                <td scope="col">address1</td>
-                <td scope="col"><button type="button" class="btn btn-primary" style="margin:0">Edit</button>
-                                <button type="button" class="btn btn-danger" style="margin:0">Delete</button></td>
-              </tr>
-              <tr>
-                <th scope="col">2</th>
-                <td scope="col">usn2</td>
-                <td scope="col">fname2</td>
-                <td scope="col">email2</td>
-                <td scope="col">address2</td>
-                <td scope="col"><button type="button" class="btn btn-primary" style="margin:0">Edit</button>
-                                <button type="button" class="btn btn-danger" style="margin:0">Delete</button></td>
-              </tr>
-              <tr>
-                <th scope="col">3</th>
-                <td scope="col">usn3</td>
-                <td scope="col">fname3</td>
-                <td scope="col">email3</td>
-                <td scope="col">address3</td>
-                <td scope="col"><button type="button" class="btn btn-primary" style="margin:0">Edit</button>
-                                <button type="button" class="btn btn-danger" style="margin:0">Delete</button></td>
-              </tr>
+                @if (isset($listuser))
+                    @foreach ($listuser as $video)
+                        <tr>
+                            <th scope="col">{{ $video->id }}</th>
+                            <td scope="col">{{ $video->user_name }}</td>
+                            <td scope="col">{{ $video->user_full_name }}</td>
+                            <td scope="col">{{ $video->user_email }}</td>
+                            <td scope="col">{{ $video->role }}</td>
+                            <td scope="col">
+                                @if ($video->id != 1)
+                                    <a href="{{ route('user_edit', $video->id) }}"><button type="button"
+                                            class="btn btn-primary" style="margin:2px">Edit</button></a>
+                                    <a href="{{ route('user_delete', $video->id) }}"><button type="button" class="btn btn-danger"
+                                            style="margin:2px">Delete</button></a>
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
             </tbody>
-          </table>
+        </table>
+
     </div>
 @endsection

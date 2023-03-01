@@ -4,51 +4,128 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Library;
+use Dotenv\Parser\ParserInterface;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 class UserController extends Controller
 {
-    public function login(){
+    public function login()
+    {
         return view('auth.login');
     }
-    public function register(){
+    public function register()
+    {
         return view('auth.register');
     }
 
-    public function login_auth(Request $request){
-
-    }
-    public function logout(){
+    public function logout()
+    {
         Auth::logout();
 
         return redirect()->route('home');
     }
 
-    public function product(){
+    public function product()
+    {
         return view('product');
     }
-    public function add_product(){
+    public function add_product()
+    {
         return view('add_product');
     }
 
-    public function staff(){
-        return view('staff');
+    public function staff()
+    {
+        $listuser = DB::table('users')->get();
+        return view('staff', compact('listuser'));
+
     }
 
-    public function add_account(){
+    public function add_account()
+    {
         return view('add_account');
     }
-<<<<<<< HEAD
-    public function user_inf(){
+    public function user_edit($id)
+    {
+        $videos = User::find($id);
+        return view('add_account', ['videos' => $videos]);
+    }
+
+    //<<<<<<< HEAD
+    public function user_inf()
+    {
         return view('user_information');
     }
-    public function bill(){
+    public function bill()
+    {
         return view('bill');
     }
-    public function add_bill(){
+    public function add_bill()
+    {
         return view('add_bill');
     }
-=======
+    public function login_auth(Request $request)
+    {
+        if (Auth::attempt(['user_email' => $request->email, 'password' => $request->password])) {
+            return redirect()->route('home');
+        } else {
+            return redirect()->route('login')->with('message', 'Invalid username or password!');
+        }
+    }
+
+    public function add_acc_auth(Request $request)
+    {
+        if ($request->isMethod('POST')) {
+            $user = DB::table('users')->where('user_email', $request->user_email)->first();
+
+            if (!$user) {
+                $newUser = new User();
+                $newUser->user_email = $request->user_email;
+                $newUser->user_full_name = $request->user_full_name;
+                $newUser->user_name = $request->user_name;
+                $newUser->password = $request->password;
+                $newUser->role = $request->role;
+                $newUser->save();
+                return redirect()->route('staff')
+                    ->with('success', 'Add account successful!');
+            } else {
+                return redirect()->route('staff')
+                    ->with('danger', 'Account exist!');
+            }
+
+        }
+    }
+    public function user_edit_auth(Request $request)
+    {
+        if ($request->isMethod('POST')) {
+            $user = User::find($request->id);
+            if ($user != null) {
+                $user->user_full_name = $request->user_full_name;
+                $user->user_name = $request->user_name;
+                $user->user_email = $request->user_email;
+                $user->role = $request->role;
+                $user->password = $request->password;
+                $user->save();
+                return redirect()->route('staff')
+                    ->with('success', 'Account update successful!');
+            } else {
+                return redirect()->route('staff')
+                    ->with('danger', 'Account not updated');
+            }
+        }
+    }
+    public function user_delete($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->route('staff')
+            ->with('success', 'Delete account successful!');
+    }
+
+//=======
 
 
->>>>>>> p2
+//>>>>>>> p2
 }

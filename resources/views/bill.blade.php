@@ -13,10 +13,10 @@
             </nav>
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                    <div class="input-group">
+                    {{-- <div class="input-group">
                         <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
                         <input type="text" class="form-control" placeholder="Type here...">
-                    </div>
+                    </div> --}}
                 </div>
                 <ul class="navbar-nav  justify-content-end">
                     <li class="nav-item d-flex align-items-center">
@@ -128,7 +128,14 @@
     </nav>
     <div class="container-fluid">
         <div class="bill_list">
-                <a href="{{url('add_bill')}}"><button class="add_bill_btn btn btn-secondary">Add new bill</button></a>
+            <div class="bill_func">
+                <div class="input-group" style="width: 300px; height: 40px; margin:16px 0px; display:inline-flex">
+                    <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control" placeholder="Type here...">
+                </div>
+                <a href="{{ url('add_bill') }}"><button class="add_bill_btn btn btn-secondary">Add new bill</button></a>
+            </div>
+
             <table class="bill_table table">
                 <thead>
                     <tr>
@@ -153,7 +160,8 @@
                         <td>21/02/2003</td>
                         <td>abc</td>
                         <td>xyz</td>
-                    </tr><tr>
+                    </tr>
+                    <tr>
                         <td>4</td>
                         <td>Out</td>
                         <td>21/02/2003</td>

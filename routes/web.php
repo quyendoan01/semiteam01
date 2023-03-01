@@ -28,16 +28,22 @@ Route::get('/register', [UserController::class, 'register'])->name('register');
 Route::get('/product', [UserController::class, 'product'])->name('product');
 Route::get('/staff', [UserController::class, 'staff'])->name('staff');
 Route::get('/add_account', [UserController::class, 'add_account'])->name('add_account');
-<<<<<<< HEAD
+//<<<<<<< HEAD
 Route::get('/user_inf', [UserController::class, 'user_inf'])->name('user_inf');
 Route::get('/bill', [UserController::class, 'bill'])->name('bill');
 Route::get('/add_bill', [UserController::class, 'add_bill'])->name('add_bill');
-=======
+//=======
 Route::get('/add_product', [UserController::class, 'add_product'])->name('add_product');
+Route::get('/user_edit/{id}',[UserController::class,'user_edit'])->name('user_edit');
+Route::get('/user_delete/{id}',[UserController::class,'user_delete'])->name('user_delete');
 
 
+Route::post('/add_acc_auth', [UserController::class, 'add_acc_auth'])->name('add_acc_auth');
+Route::post('/user_edit_auth',[UserController::class,'user_edit_auth'])->name('user_edit_auth');
+Route::post('/login_auth',[UserController::class,'login_auth'])->name('login_auth');
 
->>>>>>> p2
+
+//>>>>>>> p2
 
 
 //Route::get('/logout', [UserController::class, 'logout'])->name('logout');

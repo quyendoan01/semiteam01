@@ -60,7 +60,6 @@ body {
         background-color: #f1f1f1;
         border-radius: 12px;
     }
-<<<<<<< HEAD
     .user_inf_place {
         margin: 32px 64px;
         background-color: #f1f1f1;
@@ -95,8 +94,16 @@ body {
     }
     .add_bill_btn {
         float: right;
+        margin: 16px 0px;
+        padding: 0;
+        display: flex;
+    }
+    .bill_func {
+        display: inline-block;
+        width: 100%;
+    }
+    .add_new_role {
+        float: right;
+        margin: 4px;
     }
 }
-=======
-}
->>>>>>> p2
