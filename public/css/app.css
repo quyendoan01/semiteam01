@@ -106,4 +106,7 @@ body {
         float: right;
         margin: 4px;
     }
+    #navbarDropdown {
+        color: #f3f3f3;
+    }
 }
