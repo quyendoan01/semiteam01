@@ -17717,7 +17717,7 @@ fieldset:disabled .btn {
 }
 
 .btn {
-    margin-bottom: 1rem;
+    margin-bottom: 0;
     letter-spacing: -0.025rem;
     text-transform: none;
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
@@ -19929,7 +19929,7 @@ hr.horizontal.gray-light {
     top: 0;
     bottom: 0;
     width: 100%;
-    max-width: 15.625rem !important;
+    max-width: 14rem;
     overflow-y: auto;
     padding: 0;
     box-shadow: none;
@@ -20593,16 +20593,16 @@ hr.horizontal.gray-light {
 
 @media (min-width: 1200px) {
     .sidenav:hover {
-        max-width: 15.625rem;
+        max-width: 14rem;
     }
     .sidenav .sidenav-toggler {
         padding: 1.5rem;
     }
     .sidenav.fixed-start+.main-content {
-        margin-left: 17.125rem;
+        margin-left: 14rem;
     }
     .sidenav.fixed-end+.main-content {
-        margin-right: 17.125rem;
+        margin-right: 14rem;
     }
 }
 
