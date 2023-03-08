@@ -27,7 +27,7 @@
                             <h3 class="home-product-item__name">{{ $pro->pro_name }}</h3>
                             <div class="home-product-item__price">
                                 @if ($pro->pro_discount > 0)
-                                    <p class="home-product-item__price-old">{{$pro->unit_price}} $</p>
+                                    <p class="home-product-item__price-old">{{number_format("$pro->unit_price",2) }} $</p>
                                     <p class="home-product-item__price-new">{{$pro->unit_price-$pro->unit_price/$pro->pro_discount}} $</p>
                                 @else
                                 <p class="home-product-item__price-new">{{$pro->unit_price}} $</p>
