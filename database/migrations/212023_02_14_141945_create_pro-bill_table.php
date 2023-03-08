@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('pro_id')->constrained('product');
             $table->foreignId('bill_id')->constrained('bill');
             $table->integer('pro_amount')->default(1);
+            $table->integer('pro_cur_price')->default(0);
             $table->timestamps();
         });
     }
