@@ -9,7 +9,7 @@
                     <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
                     <input type="text" class="form-control" placeholder="Type here...">
                 </div>
-                <a href="{{ url('add_bill') }}"><button class="add_bill_btn btn btn-secondary">Add new bill</button></a>
+                <a href="{{ url('bill/add') }}"><button class="add_bill_btn btn btn-secondary">Add new bill</button></a>
             </div>
 
             <table class="bill_table table">

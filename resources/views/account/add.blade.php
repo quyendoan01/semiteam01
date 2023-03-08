@@ -63,7 +63,7 @@
                             <option value="stocker">Stocker</option>
                             <option value="manageracc">Manager Account</option>
                         </select>
-                        <a class="add_new_role" href="#"> + Add new role</a>
+                        <a class="add_new_role" href="#" style="text-decoration:none"><strong> + Add new role</strong></a>
                     </div>
                     {{-- <div class="mb-3">
                         <label for="img">Select avatar image</label>

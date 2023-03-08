@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
+
 
 
 /*
@@ -25,20 +28,39 @@ Route::get('', function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::get('/register', [UserController::class, 'register'])->name('register');
-Route::get('/product', [UserController::class, 'product'])->name('product');
-Route::get('/staff', [UserController::class, 'staff'])->name('staff');
-Route::get('/add_account', [UserController::class, 'add_account'])->name('add_account');
-//<<<<<<< HEAD
 Route::get('/user_inf', [UserController::class, 'user_inf'])->name('user_inf');
-Route::get('/bill', [UserController::class, 'bill'])->name('bill');
-Route::get('/add_bill', [UserController::class, 'add_bill'])->name('add_bill');
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+Route::post('/login_auth',[UserController::class,'login_auth'])->name('login_auth');
+
+//<<<<<<< HEAD
 //=======
 
-Route::get('/add_product', [UserController::class, 'add_product'])->name('add_product');
-Route::get('/user_edit/{id}',[UserController::class,'user_edit'])->name('user_edit');
-Route::get('/user_delete/{id}',[UserController::class,'user_delete'])->name('user_delete');
 
-Route::post('/', [UserController::class, 'logout'])->name('logout');
-Route::post('/add_acc_auth', [UserController::class, 'add_acc_auth'])->name('add_acc_auth');
-Route::post('/user_edit_auth',[UserController::class,'user_edit_auth'])->name('user_edit_auth');
-Route::post('/login_auth',[UserController::class,'login_auth'])->name('login_auth');
+Route::get('/product', [ProductController::class, 'product'])->name('product');
+Route::get('/product/add', [ProductController::class, 'create'])->name('product.create');
+Route::get('/product/delete/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+Route::post('/product/update/{id}', [ProductController::class, 'update'])->name('product.update');
+Route::get('/product/show/{id}', [ProductController::class, 'show'])->name('product.show');
+Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
+
+
+Route::get('/category', [CategoryController::class, 'category'])->name('category');
+Route::get('/category/add', [CategoryController::class, 'create'])->name('category.create');
+Route::get('/category/delete/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
+Route::get('/category/show/{id}', [CategoryController::class, 'show'])->name('category.show');
+Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
+
+
+Route::get('/account', [UserController::class, 'account'])->name('account');
+Route::get('/account/add', [UserController::class, 'add_account'])->name('add_account');
+Route::get('/account/edit/{id}',[UserController::class,'user_edit'])->name('user_edit');
+Route::get('/account/delete/{id}',[UserController::class,'user_delete'])->name('user_delete');
+Route::post('/account/add/auth', [UserController::class, 'add_acc_auth'])->name('add_acc_auth');
+Route::post('/account/edit/auth',[UserController::class,'user_edit_auth'])->name('user_edit_auth');
+
+
+Route::get('/bill', [UserController::class, 'bill'])->name('bill');
+Route::get('/bill/add', [UserController::class, 'add_bill'])->name('add_bill');

@@ -62,9 +62,25 @@ body {
         text-align: center;
     }
     .add_account {
-        margin: 32px 160px;
+        margin-left: 25%;
+        margin-right: 0;
+        width: 50%;
         background-color: #f1f1f1;
         border-radius: 12px;
+        display: block;
+        align-self: center;
+        border: solid 1px #555;
+    }
+    .div_category {
+        width: 15%;
+        background-color: #f1f1f1;
+        border-radius: 12px;
+        border: solid 1px #555;
+        height: 100%;
+        float: right;
+        margin: auto;
+        margin-left: 0;
+        padding: 4px;
     }
     .user_inf_place {
         margin: 32px 64px;
@@ -103,6 +119,10 @@ body {
         margin: 16px 0px;
         padding: 0;
         display: flex;
+    }
+    .back_btn {
+        padding: 4px;
+        margin: 8px 24px;
     }
     .bill_func {
         display: inline-block;

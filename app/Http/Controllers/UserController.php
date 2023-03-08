@@ -26,30 +26,27 @@ class UserController extends Controller
         return redirect()->route('login');
     }
 
-    public function product()
-    {
-        return view('product');
-    }
+
     public function add_product()
     {
-        return view('add_product');
+        return view('product.add');
     }
 
-    public function staff()
+    public function account()
     {
         $listuser = DB::table('users')->get();
-        return view('staff', compact('listuser'));
+        return view('account.account', compact('listuser'));
 
     }
 
     public function add_account()
     {
-        return view('add_account');
+        return view('account.add');
     }
     public function user_edit($id)
     {
         $videos = User::find($id);
-        return view('add_account', ['videos' => $videos]);
+        return view('account.add', ['videos' => $videos]);
     }
 
     //<<<<<<< HEAD
@@ -59,11 +56,11 @@ class UserController extends Controller
     }
     public function bill()
     {
-        return view('bill');
+        return view('bill.bill');
     }
     public function add_bill()
     {
-        return view('add_bill');
+        return view('bill.add');
     }
     public function login_auth(Request $request)
     {
@@ -87,10 +84,10 @@ class UserController extends Controller
                 $newUser->password = $request->password;
                 $newUser->role = $request->role;
                 $newUser->save();
-                return redirect()->route('staff')
+                return redirect()->route('account')
                     ->with('success', 'Add account successful!');
             } else {
-                return redirect()->route('staff')
+                return redirect()->route('account')
                     ->with('danger', 'Account exist!');
             }
 
@@ -107,10 +104,10 @@ class UserController extends Controller
                 $user->role = $request->role;
                 $user->password = $request->password;
                 $user->save();
-                return redirect()->route('staff')
+                return redirect()->route('account')
                     ->with('success', 'Account update successful!');
             } else {
-                return redirect()->route('staff')
+                return redirect()->route('account')
                     ->with('danger', 'Account not updated');
             }
         }
@@ -119,7 +116,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        return redirect()->route('staff')
+        return redirect()->route('account')
             ->with('success', 'Delete account successful!');
     }
 
