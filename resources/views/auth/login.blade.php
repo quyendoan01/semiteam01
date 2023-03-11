@@ -1,24 +1,56 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page in HTML with CSS Code Example</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"><link rel="stylesheet" href="{{ asset('css/login.css') }}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+
+<div class="box-form" style="margin-top: 3cm;"> 
+	<div class="left">
+		<div class="overlay">
+		<h1>Hello World </h1>
+		
+		<span>
+			
+			<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+			<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Login with Twitter</a>
+		</span>
+		</div>
+	</div>
+    
+
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Login') }}</div>
+    
+<div class="card-body">
+    <form method="POST" action="{{ route('login_auth') }}">
+	
+</div>
 
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('login_auth') }}">
+<!-- partial -->
+  
+</body>
+</html>
+@extends('layouts.app')
+
+
                             @csrf
 
-                            <div class="row mb-3">
-                                <label for="email"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                            <div class="row mb-3" style="padding-left: 1.5cm;">
+                                <P>Email Address</P>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email"
+                                    <input id="email" type="email "
                                         class="form-control @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                        value="{{ old('email') }}" required autocomplete="email" autofocus 
+                                        style="width: 8cm;">
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -28,14 +60,14 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
-                                <label for="password"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                            <div class="row mb-3" style="padding-left: 1.5cm;">
+                                <p>Password</p>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="current-password">
+                                        required autocomplete="current-password"
+                                        style="width: 8cm;">
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -44,6 +76,7 @@
                                     @enderror
                                 </div>
                             </div>
+							<p style="padding-left: 1.5cm;">Don't have an account? <a href="#">Create Your Account</a> it takes less than a minute</p>
 
                             <div class="row mb-3">
                                 <div class="col-md-6 offset-md-4">
@@ -87,8 +120,6 @@
                             </div>
                         </form>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-@endsection
+                 </div>
+@endsection 
+
