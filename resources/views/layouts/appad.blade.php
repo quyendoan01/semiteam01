@@ -36,6 +36,7 @@
     <link id="pagestyle" href="{{ asset('css/app.css') }}" rel="stylesheet" />
     <link id="pagestyle" href="{{ asset('css/argon-dashboard.css?v=2.0.4') }}" rel="stylesheet" />
 
+
     @vite(['resources/js/app.js'])
 
 </head>
