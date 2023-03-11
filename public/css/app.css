@@ -138,4 +138,19 @@ body {
     .nav-item:hover {
         color: #888;
     }
+    .pro_show {
+        margin: 12px 0px;
+        background-color: #f3f3f3;
+        display: flex;
+        width: 100%;
+    }
+    .pro_image {
+        margin: 16px;
+        width: 450px;
+        height: 450px;
+        display: flex;
+    }
+    .pro_description {
+        margin: 16px;
+    }
 }
