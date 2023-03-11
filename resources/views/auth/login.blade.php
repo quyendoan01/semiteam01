@@ -76,7 +76,7 @@
                                     @enderror
                                 </div>
                             </div>
-							<p style="padding-left: 1.5cm;">Don't have an account? <a href="#">Create Your Account</a> it takes less than a minute</p>
+							<p style="padding-left: 1.5cm;">Don't have an account? <a href="{{ route('register') }}">Create Your Account</a> it takes less than a minute</p>
 
                             <div class="row mb-3">
                                 <div class="col-md-6 offset-md-4">
