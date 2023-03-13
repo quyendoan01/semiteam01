@@ -65,7 +65,8 @@ class UserController extends Controller
     public function login_auth(Request $request)
     {
         if (Auth::attempt(['user_email' => $request->email, 'password' => $request->password])) {
-            return redirect()->route('home');
+            $user = DB::table('users')->where('user_email', $request->email)->first();
+            return redirect()->route('home')->with('urole', "$user->role");
         } else {
             return redirect()->route('login')->with('message', 'Invalid username or password!');
         }

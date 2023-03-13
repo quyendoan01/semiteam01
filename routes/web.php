@@ -20,10 +20,10 @@ use App\Http\Controllers\CategoryController;
 */
 
 Route::get('', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
-//Auth::routes();
+Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/login', [UserController::class, 'login'])->name('login');
@@ -32,8 +32,6 @@ Route::get('/user_inf', [UserController::class, 'user_inf'])->name('user_inf');
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 Route::post('/login_auth',[UserController::class,'login_auth'])->name('login_auth');
 
-//<<<<<<< HEAD
-//=======
 
 
 Route::get('/product', [ProductController::class, 'product'])->name('product');
