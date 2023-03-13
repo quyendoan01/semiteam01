@@ -103,6 +103,16 @@ html {
 
 /* button */
 
+.btn.btn--primary {
+    color: var(--white-color);
+    background-color: var(--light-btn-primary-color);
+}
+
+.btn.btn-signin {
+    height: 32px;
+    font-size: 1.2rem;
+}
+
 
 /* pagination */
 

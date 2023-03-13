@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-<<<<<<< HEAD
-=======
+
 
     protected $table = 'category';
 
@@ -22,5 +21,5 @@ class Category extends Model
     protected $fillable = [
         'cat_name'
     ];
->>>>>>> e1482334f4e53ae18a1167b986fb73fb75b61fad
+
 }
