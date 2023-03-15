@@ -20,10 +20,10 @@ use App\Http\Controllers\CategoryController;
 */
 
 Route::get('', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
-//Auth::routes();
+Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/login', [UserController::class, 'login'])->name('login');
@@ -36,8 +36,6 @@ Route::get('/addlc', [UserController::class, 'addlc'])->name('addlc');
 Route::post('/cus/add/auth', [UserController::class, 'add_cus_auth'])->name('add_cus_auth');
 Route::post('/cus/edit/auth',[UserController::class,'cus_edit_auth'])->name('cus_edit_auth');
 
-//<<<<<<< HEAD
-//=======
 
 
 Route::get('/product', [ProductController::class, 'product'])->name('product');
@@ -47,6 +45,10 @@ Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('prod
 Route::post('/product/update/{id}', [ProductController::class, 'update'])->name('product.update');
 Route::get('/product/show/{id}', [ProductController::class, 'show'])->name('product.show');
 Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
+Route::get('/product/search', [ProductController::class,'search'])->name('product.search');
+Route::get('/product/sort-by-price/{order?}', [ProductController::class, 'sortByPrice'])->name('product.sortByPrice');
+
+
 
 
 Route::get('/category', [CategoryController::class, 'category'])->name('category');
@@ -69,3 +71,7 @@ Route::post('/account/edit/auth',[UserController::class,'user_edit_auth'])->name
 Route::get('/bill', [UserController::class, 'bill'])->name('bill');
 Route::get('/bill/add', [UserController::class, 'add_bill'])->name('add_bill');
 
+<<<<<<< HEAD
+=======
+Route::get('/search', 'UserController@search');
+>>>>>>> 89020d334f59318125e3a0e2a78f365067b8b56b

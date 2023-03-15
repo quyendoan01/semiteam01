@@ -12,6 +12,7 @@
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,7 +59,7 @@
         <div class="collapse navbar-collapse  w-auto" id="sidenav-collapse-main" style="min-height:450px">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href=" {{ url('/') }} ">
+                    <a class="nav-link active" href=" {{ route('home') }} ">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fa fa-home text-primary text-sm opacity-10"></i>
@@ -72,7 +73,7 @@
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fa fa-archive text-warning text-sm opacity-10"></i>
                         </div>
-                        <span class="nav-link-text ms-1">Products</span>
+                        <span class="nav-link-text ms-1" style="color:#333">Products</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -81,7 +82,7 @@
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fa fa-arrows-h text-success text-sm opacity-10"></i>
                         </div>
-                        <span class="nav-link-text ms-1">Transaction</span>
+                        <span class="nav-link-text ms-1" style="color:#333">Transaction</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -90,18 +91,36 @@
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fa fa-users text-info text-sm opacity-10"></i>
                         </div>
-                        <span class="nav-link-text ms-1">Client</span>
+                        <span class="nav-link-text ms-1" style="color:#333">Client</span>
                     </a>
                 </li>
+
+                @if (Auth::user()->role == 'manageracc')
                 <li class="nav-item">
-                    <a class="nav-link " href="{{ url('account') }}">
+                    <a class="nav-link" href="{{ url('account') }}">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fa fa-address-book-o text-danger text-sm opacity-10"></i>
                         </div>
-                        <span class="nav-link-text ms-1">Account</span>
+                        <span class="nav-link-text ms-1" style="color:#333">
+                            Account
+                        </span>
                     </a>
                 </li>
+                @else
+                <li class="nav-item">
+                    <a class="nav-link" href="#" style="">
+
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa fa-address-book-o text-muted text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1" style="color:#d3d3d3">
+                            Account
+                    </span>
+                    </a>
+                </li>
+                @endif
 
                 <li class="nav-item mt-3">
                     <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Contact</h6>

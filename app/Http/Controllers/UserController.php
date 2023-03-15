@@ -9,6 +9,9 @@ use App\Models\Library;
 use Dotenv\Parser\ParserInterface;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\Image;
 
 class UserController extends Controller
 {
@@ -65,12 +68,16 @@ class UserController extends Controller
     }
     public function add_bill()
     {
-        return view('bill.add');
+        $product = Product::latest()->paginate(5);
+
+        return view('bill.add',compact('product'))
+        ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     public function login_auth(Request $request)
     {
         if (Auth::attempt(['user_email' => $request->email, 'password' => $request->password])) {
-            return redirect()->route('home');
+            $user = DB::table('users')->where('user_email', $request->email)->first();
+            return redirect()->route('home')->with('urole', "$user->role");
         } else {
             return redirect()->route('login')->with('message', 'Invalid username or password!');
         }
@@ -124,6 +131,12 @@ class UserController extends Controller
         return redirect()->route('account')
             ->with('success', 'Delete account successful!');
     }
+    public function search(Request $request)
+{
+    $query = $request->input('query');
+    $users = User::where('name', 'like', "%{$query}%")->get();
+    return view('search', ['users' => $users]);
+}
 
 
 

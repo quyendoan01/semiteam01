@@ -14,13 +14,22 @@ class ProductController extends Controller
 {
     public function product()
     {
-        $product = Product::latest()->paginate(5);
+        $product = Product::latest()->paginate(6);
 
+<<<<<<< HEAD
         return view('product.product', compact('product'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     public function create()
     {
+=======
+        return view('product.product',compact('product'))
+        ->with('i', (request()->input('page',1)-1)*5);
+
+    }
+
+    public function create(){
+>>>>>>> p2
         $category = Category::all();
         return view('product.add', ['category' => $category]);
     }
@@ -131,4 +140,21 @@ class ProductController extends Controller
         return redirect()->route('product')
             ->with('success', 'Delete successful');
     }
+    public function search(Request $request)
+    {
+        $query = $request->search;
+
+        $product = Product::where('pro_name', 'LIKE', "%$query%")
+                            ->get();
+
+        return view('product.product', compact('product'));
+    }
+    public function sortByPrice($order = 'asc')
+    {
+        $product = Product::orderBy('unit_price', $order)->get();
+        return view('product.product', compact('product'));
+    }
+
+
+
 }
