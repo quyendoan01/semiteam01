@@ -126,6 +126,12 @@ class UserController extends Controller
         return redirect()->route('account')
             ->with('success', 'Delete account successful!');
     }
+    public function search(Request $request)
+{
+    $query = $request->input('query');
+    $users = User::where('name', 'like', "%{$query}%")->get();
+    return view('search', ['users' => $users]);
+}
 
 //=======
 

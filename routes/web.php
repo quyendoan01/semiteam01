@@ -41,6 +41,10 @@ Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('prod
 Route::post('/product/update/{id}', [ProductController::class, 'update'])->name('product.update');
 Route::get('/product/show/{id}', [ProductController::class, 'show'])->name('product.show');
 Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
+Route::get('/product/search', [ProductController::class,'search'])->name('product.search');
+Route::get('/product/sort-by-price/{order?}', [ProductController::class, 'sortByPrice'])->name('product.sortByPrice');
+
+
 
 
 Route::get('/category', [CategoryController::class, 'category'])->name('category');
@@ -62,3 +66,5 @@ Route::post('/account/edit/auth',[UserController::class,'user_edit_auth'])->name
 
 Route::get('/bill', [UserController::class, 'bill'])->name('bill');
 Route::get('/bill/add', [UserController::class, 'add_bill'])->name('add_bill');
+
+Route::get('/search', 'UserController@search');
