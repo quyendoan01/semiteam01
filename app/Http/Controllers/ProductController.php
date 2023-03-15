@@ -16,20 +16,11 @@ class ProductController extends Controller
     {
         $product = Product::latest()->paginate(6);
 
-<<<<<<< HEAD
         return view('product.product', compact('product'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     public function create()
     {
-=======
-        return view('product.product',compact('product'))
-        ->with('i', (request()->input('page',1)-1)*5);
-
-    }
-
-    public function create(){
->>>>>>> p2
         $category = Category::all();
         return view('product.add', ['category' => $category]);
     }
