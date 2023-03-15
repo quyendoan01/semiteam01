@@ -71,6 +71,7 @@
             </div>
         </div>
     </div>
+
     {{-- <div class="container">
         <div class="grid wide">
             <div class="row sm-gutter">
@@ -153,6 +154,6 @@
             </div>
         @endforeach
     </div>
-    <script src="{{ asset('js/product.js') }}"></script>
+    <script></script>
 @endsection
 {{-- >>>>>>> p2 --}}
