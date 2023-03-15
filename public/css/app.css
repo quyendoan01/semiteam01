@@ -138,4 +138,51 @@ body {
     .nav-item:hover {
         color: #888;
     }
+    .pro_show {
+        margin: 12px 0px;
+        background-color: #f3f3f3;
+        display: flex;
+        width: 100%;
+    }
+    .pro_image {
+        margin: 16px;
+        width: 450px;
+        height: 450px;
+        display: flex;
+    }
+    .pro_description {
+        margin: 16px;
+    }
+    .bill_add {
+        display: flex;
+        margin: 8px 0;
+    }
+    .bill_add_left {
+        background-color: white;
+        width: 35%;
+        height: 100%;
+        padding: 8px;
+        border: solid 1px #f0f0f0;
+    }
+    .bill_add_right {
+        background-color: white;
+        width: 65%;
+        height: 100%;
+        padding: 4px;
+        border: solid 1px #f0f0f0;
+    }
+    .product_in_bill {
+        margin: 4px;
+        border: solid 1px #d2d2d2;
+        border-radius: 2px;
+    }
+    .single_product_in_bill {
+        width: 24.5%;
+        padding: 4px;
+        border-radius: 4px;
+        display: inline-flex;
+    }
+    .single_product_in_bill:hover {
+        background-image: linear-gradient(#fff, #d2d2d2);
+    }
 }
