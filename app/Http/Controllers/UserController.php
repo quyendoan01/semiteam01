@@ -8,6 +8,9 @@ use App\Models\Library;
 use Dotenv\Parser\ParserInterface;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\Image;
 
 class UserController extends Controller
 {
@@ -60,7 +63,10 @@ class UserController extends Controller
     }
     public function add_bill()
     {
-        return view('bill.add');
+        $product = Product::latest()->paginate(5);
+
+        return view('bill.add',compact('product'))
+        ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     public function login_auth(Request $request)
     {
