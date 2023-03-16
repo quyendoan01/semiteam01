@@ -209,12 +209,7 @@ public function add_cus_auth(Request $request)
             ->with('success', 'Delete account successful!');
     }
  
-    public function search_cus(Request $request)
-    {
-        $query = $request->input('query');
-        $cus = Customer::where('name', 'like', "%{$query}%")->get();
-        return view('lc', ['cus' => $cus]);
-    }
+    
     // public function search_cus(Request $request){
     //     $search = $request->keyWord;
 
