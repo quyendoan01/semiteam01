@@ -105,6 +105,8 @@ class UserController extends Controller
 
         }
     }
+    
+    
     public function user_edit_auth(Request $request)
     {
         if ($request->isMethod('POST')) {
@@ -191,13 +193,40 @@ public function add_cus_auth(Request $request)
                 $cus->cus_phone = $request->cus_phone;
                 $cus->cus_address = $request->cus_address;
                 $cus->save();
-                return redirect()->route('account')
+                return redirect()->route('lc')
                     ->with('success', 'Account update successful!');
             } else {
-                return redirect()->route('account')
+                return redirect()->route('lc')
                     ->with('danger', 'Account not updated');
             }
         }
     }
+    public function cus_delete($id)
+    {
+        $cus = Customer::find($id);
+        $cus->delete();
+        return redirect()->route('lc')
+            ->with('success', 'Delete account successful!');
+    }
+ 
+    public function search_cus(Request $request)
+    {
+        $query = $request->input('query');
+        $cus = Customer::where('name', 'like', "%{$query}%")->get();
+        return view('lc', ['cus' => $cus]);
+    }
+    // public function search_cus(Request $request){
+    //     $search = $request->keyWord;
+
+    //     $cus = Customer::query()
+    //     ->where('name','LIKE',"%{$search}%")->get();
+
+
+
+    //     return view ('lc', compact('listcustomer'),['successMsg'=>'Search results for '.$search]);
+
+
+    // }
+    
 //>>>>>>> p2
 }

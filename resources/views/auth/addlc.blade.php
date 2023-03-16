@@ -32,9 +32,9 @@
                     @endif
                     @csrf
                     <div class="form-group">
-                        <!-- @if (isset($cuss))
+                         @if (isset($cuss))
                             <input type="hidden" name="id" value="  {{ $cuss->id }}">
-                        @endif -->
+                        @endif
                         <label for="exampleFormControlInput1">Name</label>
                         <input name="cus_name" type="text" class="form-control" id="exampleFormControlInput1"
                             placeholder="Full Name " required

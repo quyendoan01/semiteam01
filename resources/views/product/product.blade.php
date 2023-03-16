@@ -27,7 +27,7 @@
             </form>
 
         </div>
-<<<<<<< HEAD
+
         <div id="list-product" class="row sm-gutter"></div>
         <div id="list-product" class="row sm-gutter">
             @foreach ($product as $pro)
@@ -76,7 +76,6 @@
                 </div>
             @endforeach
 
-=======
         <a href="{{ route('product.create') }}"><button class="add_product btn btn-secondary">Add Product</button></a>
     </div>
     <div class="home-filter hide-on-mobile-tablet">
@@ -119,7 +118,7 @@
                     <i class="fas fa-angle-right"></i>
                 </a>
             </div>
->>>>>>> p2
+
         </div>
     </div>
     {{-- <div class="container">
@@ -206,4 +205,3 @@
     </div>
     <script src="{{ asset('js/product.js') }}"></script>
 @endsection
-{{-- >>>>>>> p2 --}}

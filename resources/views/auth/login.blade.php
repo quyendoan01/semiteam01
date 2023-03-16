@@ -2,16 +2,17 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Login Page in HTML with CSS Code Example</title>
+  <title>Login Page in HTL with CSS Code Example</title>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
-
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"><link rel="stylesheet" href="{{ asset('css/login.css') }}">
+   
+    
+   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"><link rel="stylesheet" href="{{ asset('css/login.css') }}">
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
-
+ 
 <div class="box-form" style="margin-top: 3cm;"> 
 	<div class="left">
 		<div class="overlay">
@@ -26,45 +27,55 @@
 	</div>
     
 
-
+ 
 @section('content')
     
 <div class="card-body">
     <form method="POST" action="{{ route('login_auth') }}">
 	
-</div>
+
 
 <!-- partial -->
-  
-</body>
-</html>
+ 
 @extends('layouts.app')
+
 
 
                             @csrf
 
-                            <div class="row mb-3" style="padding-left: 1.5cm;">
+                   
+         <div class="row mb-3" style="padding-left: 1.5cm;">
                                 <P>Email Address</P>
 
-                                <div class="col-md-6">
+                    
+            <div class="col-md-6">
                                     <input id="email" type="email "
                                         class="form-control @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" required autocomplete="email" autofocus 
+                    
+                    value="{{ old('email') }}" required autocomplete="email" autofocus 
                                         style="width: 8cm;">
 
-                                    @error('email')
+                       
+             @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
-                                        </span>
+                       
+                 </span>
                                     @enderror
                                 </div>
-                            </div>
+                             </div>
+    
+
 
                             <div class="row mb-3" style="padding-left: 1.5cm;">
-                                <p>Password</p>
+                       
+     
+         <p>Password</p>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password"
+                        
+     
+            <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="current-password"
                                         style="width: 8cm;">
@@ -123,3 +134,6 @@
                  </div>
 @endsection 
 
+  
+</body>
+</html>
