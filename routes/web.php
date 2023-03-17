@@ -56,15 +56,15 @@ Route::get('/category/show/{id}', [CategoryController::class, 'show'])->name('ca
 Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
 
 
-Route::get('/account', [UserController::class, 'account'])->name('account');
-Route::get('/account/add', [UserController::class, 'add_account'])->name('add_account');
-Route::get('/account/edit/{id}',[UserController::class,'user_edit'])->name('user_edit');
-Route::get('/account/delete/{id}',[UserController::class,'user_delete'])->name('user_delete');
-Route::post('/account/add/auth', [UserController::class, 'add_acc_auth'])->name('add_acc_auth');
-Route::post('/account/edit/auth',[UserController::class,'user_edit_auth'])->name('user_edit_auth');
+Route::get('/account', [UserController::class, 'account'])->name('account')->middleware('auth');
+Route::get('/account/add', [UserController::class, 'add_account'])->name('add_account')->middleware('auth');
+Route::get('/account/edit/{id}',[UserController::class,'user_edit'])->name('user_edit')->middleware('auth');
+Route::get('/account/delete/{id}',[UserController::class,'user_delete'])->name('user_delete')->middleware('auth');
+Route::post('/account/add/auth', [UserController::class, 'add_acc_auth'])->name('add_acc_auth')->middleware('auth');
+Route::post('/account/edit/auth',[UserController::class,'user_edit_auth'])->name('user_edit_auth')->middleware('auth');
 
 
-Route::get('/bill', [UserController::class, 'bill'])->name('bill');
+Route::get('/bill', [UserController::class, 'bill'])->name('bill')->middleware('auth');
 Route::get('/bill/add', [UserController::class, 'add_bill'])->name('add_bill');
 
 Route::get('/search', 'UserController@search');

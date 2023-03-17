@@ -10,20 +10,19 @@
     <link rel="stylesheet" href="{{ URL::asset('css/responsive.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/normalize.min.css') }}">
 
-        <div class="container-fluid">
-            <form action="{{ route('product.search') }}" method="GET">
+        <div class="container-fluid" style="display: flex;align-items: center;justify-content: space-between;" >
+            <form action="{{ route('product.search') }}" method="GET" style="display:inline">
                 @csrf
-                <div class="input-group"
-                    style="width: 300px; height: 50px; margin:16px 0px; display:inline-flex; align-items: baseline">
-
-                    <span class="input-group-text text-body">
-                        <button class="btn btn-default" type="submit"><i class="fas fa-search"
-                                aria-hidden="true"></i></button>
-                    </span>
+                <div class="input-group" style="width: 300px; height: 40px; margin:16px 0px; display:inline-flex">
+                    <button class="input-group-text text-body" type="submit"><i class="fas fa-search" aria-hidden="true"></i></button>
                     <input name="search" type="text" class="form-control" placeholder="Type here...">
+                </div>
             </form>
-            <a href="{{ route('product.create') }}"><button class="add_product btn btn-secondary">Add Product</button></a>
+            <div class="float:right;display:inline">
+            <a style="margin:auto" href="{{ route('product.create') }}"><button class="add_product btn btn-secondary">Add Product</button></a>
         </div>
+    </div>
+
 
 
     <div class="home-filter hide-on-mobile-tablet">

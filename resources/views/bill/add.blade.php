@@ -50,8 +50,8 @@
             <br>
             <div style="display:block;width:100%">
             @foreach ($product as $pro)
-
-                <div class="single_product_in_bill">
+                <input type="hidden" id="pro-id" value="{{$pro->id}}">
+                <div class="single_product_in_bill" onclick="add_to_bill()">
                     <input type="hidden"
                             value="{{ $image = DB::table('image')->select('img_infor')->where('pro_id', '=', "$pro->id")->get() }}">
                         @foreach ($image as $image)
@@ -64,13 +64,15 @@
                 </div>
             @endforeach
 
-        </div>
+            </div>
 
         </div>
     </div>
 
 
     <script>
+        function add_to_bill(){
 
+        }
     </script>
 @endsection
