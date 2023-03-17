@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Image;
+use App\Models\Customer;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
@@ -17,6 +18,7 @@ class ProductController extends Controller
         $product = Product::latest()->paginate(6);
 $category= Category::all();
 
+<<<<<<< HEAD
         return view('product.product', compact('product','category'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -24,6 +26,21 @@ $category= Category::all();
 
     public function create(){
 
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> 57b470f461350b74bcefef2ea1f61dca7ac0925b
+        return view('product.product', compact('product'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+    public function create()
+    {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 57b470f461350b74bcefef2ea1f61dca7ac0925b
+>>>>>>> df4c2f1c0071e6b21cc049277395c7d03eedc9e3
         $category = Category::all();
         return view('product.add', ['category' => $category]);
     }
