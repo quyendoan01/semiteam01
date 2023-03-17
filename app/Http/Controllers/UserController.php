@@ -133,8 +133,5 @@ class UserController extends Controller
     return view('search', ['users' => $users]);
 }
 
-//=======
 
-
-//>>>>>>> p2
 }
