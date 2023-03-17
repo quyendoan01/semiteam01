@@ -50,7 +50,7 @@ Route::get('/product/show/{id}', [ProductController::class, 'show'])->name('prod
 Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
 Route::get('/product/search', [ProductController::class,'search'])->name('product.search');
 Route::get('/product/sort-by-price/{order?}', [ProductController::class, 'sortByPrice'])->name('product.sortByPrice');
-
+Route::post('/product/filter', [ProductController::class,'filter'])->name('product.filter');
 
 
 
