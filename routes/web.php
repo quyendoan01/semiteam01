@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryController;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,7 +24,7 @@ Route::get('', function () {
     return view('auth.login');
 });
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/login', [UserController::class, 'login'])->name('login');
@@ -31,6 +32,12 @@ Route::get('/register', [UserController::class, 'register'])->name('register');
 Route::get('/user_inf', [UserController::class, 'user_inf'])->name('user_inf');
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 Route::post('/login_auth',[UserController::class,'login_auth'])->name('login_auth');
+Route::get('/lc', [UserController::class, 'lc'])->name('lc');
+Route::get('/addlc', [UserController::class, 'addlc'])->name('addlc');
+Route::post('/cus/add/auth', [UserController::class, 'add_cus_auth'])->name('add_cus_auth');
+Route::post('/cus/edit/auth',[UserController::class,'cus_edit_auth'])->name('cus_edit_auth');
+Route::get('/auth/edit/{id}',[UserController::class,'cus_edit'])->name('cus_edit');
+Route::get('/auth/delete/{id}',[UserController::class,'cus_delete'])->name('cus_delete');
 
 
 
