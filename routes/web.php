@@ -51,6 +51,10 @@ Route::post('/product/store', [ProductController::class, 'store'])->name('produc
 Route::get('/product/search', [ProductController::class,'search'])->name('product.search');
 Route::get('/product/sort-by-price/{order?}', [ProductController::class, 'sortByPrice'])->name('product.sortByPrice');
 Route::post('/product/filter', [ProductController::class,'filter'])->name('product.filter');
+<<<<<<< HEAD
+=======
+
+>>>>>>> 01d3fcb4f54b30415bacc83920f73c57ac5b3cfe
 
 
 
@@ -69,6 +73,7 @@ Route::get('/account/edit/{id}',[UserController::class,'user_edit'])->name('user
 Route::get('/account/delete/{id}',[UserController::class,'user_delete'])->name('user_delete')->middleware('auth');
 Route::post('/account/add/auth', [UserController::class, 'add_acc_auth'])->name('add_acc_auth')->middleware('auth');
 Route::post('/account/edit/auth',[UserController::class,'user_edit_auth'])->name('user_edit_auth')->middleware('auth');
+Route::get('/account/search', [UserController::class,'search'])->name('account.search');
 
 
 Route::get('/bill', [UserController::class, 'bill'])->name('bill')->middleware('auth');

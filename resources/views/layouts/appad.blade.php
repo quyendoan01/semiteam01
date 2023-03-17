@@ -68,7 +68,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="{{ url('/product') }}">
+                    <a class="nav-link " href="{{ route('product') }}">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fa fa-archive text-warning text-sm opacity-10"></i>
@@ -96,30 +96,30 @@
                 </li>
 
                 @if (Auth::user()->role == 'manageracc')
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('account') }}">
-                        <div
-                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fa fa-address-book-o text-danger text-sm opacity-10"></i>
-                        </div>
-                        <span class="nav-link-text ms-1" style="color:#333">
-                            Account
-                        </span>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('account') }}">
+                            <div
+                                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="fa fa-address-book-o text-danger text-sm opacity-10"></i>
+                            </div>
+                            <span class="nav-link-text ms-1" style="color:#333">
+                                Account
+                            </span>
+                        </a>
+                    </li>
                 @else
-                <li class="nav-item">
-                    <a class="nav-link" href="#" style="">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="">
 
-                        <div
-                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fa fa-address-book-o text-muted text-sm opacity-10"></i>
-                        </div>
-                        <span class="nav-link-text ms-1" style="color:#d3d3d3">
-                            Account
-                    </span>
-                    </a>
-                </li>
+                            <div
+                                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="fa fa-address-book-o text-muted text-sm opacity-10"></i>
+                            </div>
+                            <span class="nav-link-text ms-1" style="color:#d3d3d3">
+                                Account
+                            </span>
+                        </a>
+                    </li>
                 @endif
 
                 <li class="nav-item mt-3">
