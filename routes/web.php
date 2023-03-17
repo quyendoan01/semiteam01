@@ -70,6 +70,7 @@ Route::get('/account/edit/{id}',[UserController::class,'user_edit'])->name('user
 Route::get('/account/delete/{id}',[UserController::class,'user_delete'])->name('user_delete')->middleware('auth');
 Route::post('/account/add/auth', [UserController::class, 'add_acc_auth'])->name('add_acc_auth')->middleware('auth');
 Route::post('/account/edit/auth',[UserController::class,'user_edit_auth'])->name('user_edit_auth')->middleware('auth');
+Route::get('/account/search', [UserController::class,'search'])->name('account.search');
 
 
 Route::get('/bill', [UserController::class, 'bill'])->name('bill')->middleware('auth');
