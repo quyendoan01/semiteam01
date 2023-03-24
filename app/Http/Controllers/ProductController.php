@@ -16,11 +16,17 @@ class ProductController extends Controller
     public function product()
     {
         $product = Product::latest()->paginate(6);
+$category= Category::all();
 
 
-        return view('product.product', compact('product'))
+
+        return view('product.product', compact('product','category'))
+
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
+
+
+
     public function create()
     {
 
@@ -137,18 +143,32 @@ class ProductController extends Controller
     public function search(Request $request)
     {
         $query = $request->search;
+        $category= Category::all();
 
         $product = Product::where('pro_name', 'LIKE', "%$query%")
                             ->get();
 
-        return view('product.product', compact('product'));
+        return view('product.product', compact('product','category'));
     }
     public function sortByPrice($order = 'asc')
     {
         $product = Product::orderBy('unit_price', $order)->get();
-        return view('product.product', compact('product'));
+        $category= Category::all();
+
+        return view('product.product', compact('product','category'));
     }
 
+    public function filter($cat = 'cat')
+    {
+        $category= Category::all();
+
+        $cate = DB::table('category')->where('cat_name','=',"$cat")->first();
+        $query = $cate->id;
+
+        $product = Product::where('cat_id', '=', "$query")->get();
+
+        return view('product.product', compact('product','category'));
+    }
 
 
 }

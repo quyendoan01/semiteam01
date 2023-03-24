@@ -942,12 +942,13 @@ border-color: red green blue yellow */
 /* home filter */
 
 .home-filter {
-    background-color: var(--hover-color);
+    background-color: #fff;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 30px 0px;
-    border-radius: 0px;
+    padding: 8px 0px;
+    border-radius: 8px;
+    width: 100%;
 }
 
 .home-filter-control,
@@ -977,6 +978,7 @@ border-color: red green blue yellow */
     align-items: center;
     justify-content: space-between;
     position: relative;
+    z-index: 10;
 }
 
 .home-filter-sort-list {
@@ -1381,5 +1383,9 @@ border-color: red green blue yellow */
 
 .other-footer-more {
     margin: 8px 10px 0;
+<<<<<<< HEAD
 }
 
+=======
+}
+>>>>>>> d62a498f2b1c7f488b6f2febd6d8e5013ccd6405

@@ -21,9 +21,9 @@ class UserController extends Controller
         return view('auth.login');
     }
 
-    
 
-   
+
+
     public function register()
     {
         return view('auth.register');
@@ -58,7 +58,6 @@ class UserController extends Controller
         return view('account.add', ['videos' => $videos]);
     }
 
-    //<<<<<<< HEAD
     public function user_inf()
     {
         return view('user_information');
@@ -110,8 +109,19 @@ class UserController extends Controller
 
         }
     }
-    
-    
+    public function search(Request $request)
+{
+    $query = $request->input('query');
+
+    $users = User::where('name', 'LIKE', "%{$query}%")
+                 ->orWhere('email', 'LIKE', "%{$query}%")
+                 ->paginate(10);
+
+    return view('users.index', ['users' => $users]);
+}
+
+
+
     public function user_edit_auth(Request $request)
     {
         if ($request->isMethod('POST')) {
@@ -138,16 +148,10 @@ class UserController extends Controller
         return redirect()->route('account')
             ->with('success', 'Delete account successful!');
     }
-    public function search(Request $request)
-{
-    $query = $request->input('query');
-    $users = User::where('name', 'like', "%{$query}%")->get();
-    return view('search', ['users' => $users]);
-}
 
 
 
-//=======
+
 public function addlc()
 {
     return view('auth.addlc');
@@ -213,7 +217,7 @@ public function add_cus_auth(Request $request)
         return redirect()->route('lc')
             ->with('success', 'Delete account successful!');
     }
- 
+
     public function search_cus(Request $request)
     {
         $query = $request->input('query');
@@ -221,6 +225,7 @@ public function add_cus_auth(Request $request)
         return view('lc', ['cus' => $cus]);
     }
 
+<<<<<<< HEAD
     public function userinfo()
 {
     return view('auth.userinfo');
@@ -231,6 +236,8 @@ public function user_information()
     return view('user_information');
 }
 
+=======
+>>>>>>> d62a498f2b1c7f488b6f2febd6d8e5013ccd6405
     // public function search_cus(Request $request){
     //     $search = $request->keyWord;
 
@@ -243,6 +250,7 @@ public function user_information()
 
 
     // }
-    
-//>>>>>>> p2
+
+
+
 }
