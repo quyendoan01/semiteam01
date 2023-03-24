@@ -55,6 +55,7 @@
                 <span class="ms-1 font-weight-bold"> &nbsp; Semi Project T1</span>
             </a>
         </div>
+        
         <hr class="horizontal dark mt-0">
         <div class="collapse navbar-collapse  w-auto" id="sidenav-collapse-main" style="min-height:450px">
             <ul class="navbar-nav">
@@ -163,6 +164,10 @@
                         <div class="input-group">
 
                         </div>
+                        <div class="profile-img">
+                        
+                        </div>
+                        
                     </div>
                     <ul class="navbar-nav  justify-content-end">
                         <li class="nav-item d-flex align-items-center">

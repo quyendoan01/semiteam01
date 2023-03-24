@@ -185,4 +185,8 @@ body {
     .single_product_in_bill:hover {
         background-image: linear-gradient(#fff, #d2d2d2);
     }
+
+    .test123 img {
+        border-radius: 8px;
+      }
 }

@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Image;
+use Session;
 
 class UserController extends Controller
 {
@@ -77,7 +78,11 @@ class UserController extends Controller
     {
         if (Auth::attempt(['user_email' => $request->email, 'password' => $request->password])) {
             $user = DB::table('users')->where('user_email', $request->email)->first();
+            $currentuser = Auth::user();
+            $request->session()->put('currentuser', $currentuser);
+
             return redirect()->route('home')->with('urole', "$user->role");
+
         } else {
             return redirect()->route('login')->with('message', 'Invalid username or password!');
         }
@@ -215,6 +220,17 @@ public function add_cus_auth(Request $request)
         $cus = Customer::where('name', 'like', "%{$query}%")->get();
         return view('lc', ['cus' => $cus]);
     }
+
+    public function userinfo()
+{
+    return view('auth.userinfo');
+}
+
+public function user_information()
+{
+    return view('user_information');
+}
+
     // public function search_cus(Request $request){
     //     $search = $request->keyWord;
 

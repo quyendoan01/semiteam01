@@ -39,8 +39,7 @@
                             <div class="home-product-item__imga"
                                 style="background-image: url(); width: 100%;min-height:220px;max:height:500px;display:flex">
                                 <div style="max-width:100%;min-height:220px;max:height:500px;margin:auto;display:flex">
-                                    <img src="{{ asset("image/product/$image->img_infor") }}"
-                                        style="width:100%;height:100%;margin:auto;display:block">
+                                    <img src="{{ asset("image\ product\ $image->img_infor") }} " style="width:100%;height:100%;margin:auto;display:block">
                                 </div>
                             </div>
                         @endforeach

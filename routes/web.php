@@ -38,6 +38,8 @@ Route::post('/cus/add/auth', [UserController::class, 'add_cus_auth'])->name('add
 Route::post('/cus/edit/auth',[UserController::class,'cus_edit_auth'])->name('cus_edit_auth');
 Route::get('/auth/edit/{id}',[UserController::class,'cus_edit'])->name('cus_edit');
 Route::get('/auth/delete/{id}',[UserController::class,'cus_delete'])->name('cus_delete');
+Route::get('/userinfo', [UserController::class, 'userinfo'])->name('userinfo');
+Route::get('/user_information', [UserController::class, 'user_information'])->name('user_information');
 
 
 
