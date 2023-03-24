@@ -19,11 +19,9 @@ class ProductController extends Controller
 $category= Category::all();
 
 
-<<<<<<< HEAD
-        return view('product.product', compact('product'))
-=======
+
         return view('product.product', compact('product','category'))
->>>>>>> 01d3fcb4f54b30415bacc83920f73c57ac5b3cfe
+
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -31,10 +29,7 @@ $category= Category::all();
 
     public function create()
     {
-<<<<<<< HEAD
 
-=======
->>>>>>> 01d3fcb4f54b30415bacc83920f73c57ac5b3cfe
         $category = Category::all();
         return view('product.add', ['category' => $category]);
     }
@@ -163,22 +158,11 @@ $category= Category::all();
         return view('product.product', compact('product','category'));
     }
 
-    public function filter(Request $request)
+    public function filter($cat = 'cat')
     {
         $category= Category::all();
 
-        $cate = DB::table('category')->where('cat_name','=',"$request->filter")->first();
-        $query = $cate->id;
-
-        $product = Product::where('cat_id', '=', "$query")->get();
-
-        return view('product.product', compact('product','category'));
-    }
-    public function filter(Request $request)
-    {
-        $category= Category::all();
-
-        $cate = DB::table('category')->where('cat_name','=',"$request->filter")->first();
+        $cate = DB::table('category')->where('cat_name','=',"$cat")->first();
         $query = $cate->id;
 
         $product = Product::where('cat_id', '=', "$query")->get();

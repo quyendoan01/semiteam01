@@ -152,38 +152,28 @@ body {
     .pro_description {
         margin: 16px;
     }
-    .bill_add {
-        display: flex;
-        margin: 8px 0;
+    .bill_header_left {
+        float: left;
+        width: 70%;
+        background-color: #fff;
+        padding: 16px;
+        min-height: 180px;
     }
-    .bill_add_left {
-        background-color: white;
-        width: 35%;
-        height: 100%;
-        padding: 8px;
-        border: solid 1px #f0f0f0;
-        min-height: 450px;
+    .bill_header_right {
+        float: right;
+        width: 30%;
+        background-color: #fff;
+        padding: 16px;
+        min-height: 180px;
     }
-    .bill_add_right {
-        background-color: white;
-        width: 65%;
-        height: 100%;
-        padding: 4px;
-        border: solid 1px #f0f0f0;
-        min-height: 450px;
+    .bill_product {
+        width: 100%;
+        background-color: #fff;
     }
-    .product_in_bill {
-        margin: 4px;
-        border: solid 1px #d2d2d2;
-        border-radius: 2px;
+    .bill_product_table {
+        width: 100%;
     }
-    .single_product_in_bill {
-        width: 24.5%;
-        padding: 4px;
-        border-radius: 4px;
-        display: inline-flex;
-    }
-    .single_product_in_bill:hover {
-        background-image: linear-gradient(#fff, #d2d2d2);
+    .bill_product_column {
+        width: 25%;
     }
 }

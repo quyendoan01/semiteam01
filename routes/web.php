@@ -50,12 +50,7 @@ Route::get('/product/show/{id}', [ProductController::class, 'show'])->name('prod
 Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
 Route::get('/product/search', [ProductController::class,'search'])->name('product.search');
 Route::get('/product/sort-by-price/{order?}', [ProductController::class, 'sortByPrice'])->name('product.sortByPrice');
-Route::post('/product/filter', [ProductController::class,'filter'])->name('product.filter');
-<<<<<<< HEAD
-=======
-
->>>>>>> 01d3fcb4f54b30415bacc83920f73c57ac5b3cfe
-
+Route::get('/product/filter/{cat?}', [ProductController::class,'filter'])->name('product.filter');
 
 
 Route::get('/category', [CategoryController::class, 'category'])->name('category');
