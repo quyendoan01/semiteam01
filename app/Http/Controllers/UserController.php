@@ -62,17 +62,8 @@ class UserController extends Controller
     {
         return view('user_information');
     }
-    public function bill()
-    {
-        return view('bill.bill');
-    }
-    public function add_bill()
-    {
-        $product = Product::latest()->paginate(5);
 
-        return view('bill.add',compact('product'))
-        ->with('i', (request()->input('page', 1) - 1) * 5);
-    }
+
     public function login_auth(Request $request)
     {
         if (Auth::attempt(['user_email' => $request->email, 'password' => $request->password])) {
@@ -225,7 +216,7 @@ public function add_cus_auth(Request $request)
         return view('lc', ['cus' => $cus]);
     }
 
-<<<<<<< HEAD
+
     public function userinfo()
 {
     return view('auth.userinfo');
@@ -236,8 +227,6 @@ public function user_information()
     return view('user_information');
 }
 
-=======
->>>>>>> d62a498f2b1c7f488b6f2febd6d8e5013ccd6405
     // public function search_cus(Request $request){
     //     $search = $request->keyWord;
 

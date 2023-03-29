@@ -15,8 +15,8 @@ class ProductController extends Controller
 {
     public function product()
     {
-        $product = Product::latest()->paginate(6);
-$category= Category::all();
+        $product = Product::latest()->paginate(15);
+        $category= Category::all();
 
 
 
@@ -136,6 +136,7 @@ $category= Category::all();
         if (File::exists($image_path)) {
             File::delete($image_path);
         }
+        $image = DB::table('image')->where('pro_id','=',"$product->id")->delete();
         $product->delete();
         return redirect()->route('product')
             ->with('success', 'Delete successful');

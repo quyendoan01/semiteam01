@@ -169,15 +169,66 @@ body {
     .bill_product {
         width: 100%;
         background-color: #fff;
+        padding: 16px;
     }
     .bill_product_table {
         width: 100%;
     }
     .bill_product_column {
-        width: 25%;
+        height: auto;
     }
-
     .test123 img {
         border-radius: 8px;
-      }
+    }
+    .select_item_product {
+        width: 90%;
+    }
+    .bill_bottom {
+        display: flex;
+        justify-content: space-between;
+        padding: 16px;
+    }
+    .bill_middle_product {
+        width: 100%;
+        background-color: #fff;
+        display: block;
+        border-radius: 4px;
+        padding: 4px;
+        margin: 4px 0px;
+    }
+    .bill_des {
+        width: 150px;
+        border: none;
+        border-bottom: 1px solid gray;
+        text-align: center;
+    }
+    .price {
+        width: 50px;
+        color: rgb(0, 190, 0);
+        margin: 0px;
+        text-align: center;
+        box-shadow: 1px 2px rgb(0, 78, 0);
+    }
+    .quantity {
+        width: 50px;
+        border: none;
+        border-bottom: 1px solid gray;
+    }
+    .list_product_in_bill {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+    .list_product_in_bill_single {
+        width: 23.5%;
+        height: 80px;
+        background-color: #fff;
+        border-radius: 4px;
+        margin: 5px;
+        border: none;
+        display: flex;
+    }
+    .list_product_in_bill_single:hover {
+        background-color: #e3e3e3;
+    }
 }

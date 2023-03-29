@@ -30,7 +30,7 @@
                 <h4 style="color: #000">Product name: {{ $product->pro_name }}</h4>
                 <p>Sold: </p>
 
-                <div class="price" style="display:flex">
+                <div class="price1" style="display:flex">
                     <p>Price: &nbsp;</p>
                     @if ($product->pro_discount > 0)
                         <input type="hidden"
@@ -59,7 +59,7 @@
                         margin-left: 8px;">
                             {{ number_format("$product->unit_price", 2) }} $</p>
                     @endif
-                    <p style="color: green">Sales: {{ $product->pro_discount }}%</p>
+                    <p style="color: green; margin: 0px 8px">Sales: {{ $product->pro_discount }}%</p>
                 </div>
                 <input type="hidden"
                     name="{{ $cate = DB::table('category')->where('id', '=', "$product->cat_id")->get() }}">

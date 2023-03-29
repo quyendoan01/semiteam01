@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BillController;
 
 
 
@@ -73,7 +74,9 @@ Route::post('/account/edit/auth',[UserController::class,'user_edit_auth'])->name
 Route::get('/account/search', [UserController::class,'search'])->name('account.search');
 
 
-Route::get('/bill', [UserController::class, 'bill'])->name('bill')->middleware('auth');
-Route::get('/bill/add', [UserController::class, 'add_bill'])->name('add_bill');
+Route::get('/bill', [BillController::class, 'bill'])->name('bill')->middleware('auth');
+Route::get('/bill/add', [BillController::class, 'add_bill'])->name('add_bill');
+Route::post('/bill/store', [BillController::class, 'store_bill'])->name('store_bill');
+
 
 Route::get('/search', 'UserController@search');

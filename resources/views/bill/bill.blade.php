@@ -23,27 +23,33 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>In</td>
-                        <td>21/02/2003</td>
-                        <td>abc</td>
-                        <td>xyz</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>In</td>
-                        <td>21/02/2003</td>
-                        <td>abc</td>
-                        <td>xyz</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Out</td>
-                        <td>21/02/2003</td>
-                        <td>abc</td>
-                        <td>xyz</td>
-                    </tr>
+                    @foreach ($bill as $bill)
+
+                        <tr>
+                        <td>
+                            <a href="{{route('home')}}">B{{$bill->id}}
+                    </a>
+                </td>
+                        <td>@if ($bill->type == 0)
+                            In
+                            @else
+                            Out
+                        @endif</td>
+                        <td>{{$bill->bill_payment}}</td>
+                        <input type="hidden" value="{{$cus_name = DB::table('customer')->where('id', $bill->cus_id)->get()}}">
+                        <td>
+                            @foreach ($cus_name as $cus)
+                                {{$cus->cus_name}}
+                            @endforeach
+                        </td>
+                        <input type="hidden" value="{{$user_name = DB::table('users')->where('id', $bill->user_id)->get()}}">
+                        <td>
+                            @foreach ($user_name as $user)
+                                {{$user->user_name}}
+                            @endforeach
+                        </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

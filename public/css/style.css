@@ -946,7 +946,7 @@ border-color: red green blue yellow */
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 8px 0px;
+    padding: 8px;
     border-radius: 8px;
     width: 100%;
 }
@@ -1061,6 +1061,7 @@ border-color: red green blue yellow */
     background-color: var(--white-color);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     transition: transform linear 0.1s;
+    height: 100%;
 }
 
 .home-product-item-link:hover {
@@ -1104,7 +1105,7 @@ border-color: red green blue yellow */
     font-weight: 400;
     color: var(--text-color);
     line-height: 1.4rem;
-    margin: 0 0 20px;
+    margin: 0px;
     height: 2.8rem;
     overflow: hidden;
     display: block;
@@ -1194,7 +1195,7 @@ border-color: red green blue yellow */
     text-align: right;
     font-size: 1rem;
     color: var(--text-color);
-    margin: 5px 0;
+    margin: 0px;
 }
 
 .home-product-item__favourite {
@@ -1383,9 +1384,9 @@ border-color: red green blue yellow */
 
 .other-footer-more {
     margin: 8px 10px 0;
-<<<<<<< HEAD
+    <<<<<<< HEAD
 }
 
 =======
 }
->>>>>>> d62a498f2b1c7f488b6f2febd6d8e5013ccd6405
+>>>>>>>d62a498f2b1c7f488b6f2febd6d8e5013ccd6405
