@@ -5,15 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Bill extends Model
+class ProBill extends Model
 {
     use HasFactory;
 
-    protected $table = 'bill';
-
-    protected $primaryKey = 'id';
+    protected $table = 'pro-bill';
 
     protected $fillable = [
-        'type','bill_payment','cus_id','user_id'
+        'pro_id','bill_id','pro_amount','pro_cur_price'
     ];
 }

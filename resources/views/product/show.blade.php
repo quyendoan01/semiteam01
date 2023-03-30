@@ -28,9 +28,9 @@
             <div class="pro_description">
                 <h5 style="color: #000">Product ID: PR{{ $product->id }}</h5>
                 <h4 style="color: #000">Product name: {{ $product->pro_name }}</h4>
-                <p>Sold: </p>
 
-                <div class="price" style="display:flex">
+
+                <div class="price1" style="display:flex">
                     <p>Price: &nbsp;</p>
                     @if ($product->pro_discount > 0)
                         <input type="hidden"
@@ -59,7 +59,7 @@
                         margin-left: 8px;">
                             {{ number_format("$product->unit_price", 2) }} $</p>
                     @endif
-                    <p style="color: green">Sales: {{ $product->pro_discount }}%</p>
+                    <p style="color: green; margin: 0px 8px">Sales: {{ $product->pro_discount }}%</p>
                 </div>
                 <input type="hidden"
                     name="{{ $cate = DB::table('category')->where('id', '=', "$product->cat_id")->get() }}">
@@ -68,7 +68,44 @@
                 @endforeach
                 <p>Product Quantity: {{ $product->pro_quantity }}</p>
                 <p>Product Origin: {{ $product->pro_origin }}</p>
+                <p style="color:blue">Sold: {{$pro_sold}}</p>
             </div>
         </div>
     </div>
+    <input type="text" id="searchInput" placeholder="Enter text to search">
+    <button onclick="searchText()">Search</button>
+
+    <div class="container">
+      <button>
+        <p><b>This is the first paragraph.</b></p>
+      </button>
+      <button>
+        <p><b>This is the second paragraph.</b></p>
+      </button>
+      <button>
+        <p><b>This is the third paragraph.</b></p>
+      </button>
+    </div>
+
+    <script>
+      function searchText() {
+        var searchQuery = document.getElementById("searchInput").value;
+        var buttons = document.querySelectorAll(".container button");
+        var found = false;
+
+        for (var i = 0; i < buttons.length; i++) {
+          var bTag = buttons[i].querySelector("p b");
+          if (bTag.innerText.includes(searchQuery)) {
+            buttons[i].style.display = "block";
+            found = true;
+          } else {
+            buttons[i].style.display = "none";
+          }
+        }
+
+        if (!found) {
+          alert("No matches found.");
+        }
+      }
+    </script>
 @endsection

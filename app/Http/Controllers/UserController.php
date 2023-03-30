@@ -10,6 +10,8 @@ use Dotenv\Parser\ParserInterface;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Bill;
+use App\Models\ProBill;
 use App\Models\Category;
 use App\Models\Image;
 use Session;
@@ -62,17 +64,8 @@ class UserController extends Controller
     {
         return view('user_information');
     }
-    public function bill()
-    {
-        return view('bill.bill');
-    }
-    public function add_bill()
-    {
-        $product = Product::latest()->paginate(5);
 
-        return view('bill.add',compact('product'))
-        ->with('i', (request()->input('page', 1) - 1) * 5);
-    }
+
     public function login_auth(Request $request)
     {
         if (Auth::attempt(['user_email' => $request->email, 'password' => $request->password])) {
@@ -111,13 +104,13 @@ class UserController extends Controller
     }
     public function search(Request $request)
 {
-    $query = $request->input('query');
+    $query = $request->search;
 
-    $users = User::where('name', 'LIKE', "%{$query}%")
-                 ->orWhere('email', 'LIKE', "%{$query}%")
-                 ->paginate(10);
+    $listuser = User::where('user_name', 'LIKE', "%{$query}%")
+                 ->orWhere('user_email', 'LIKE', "%{$query}%")
+                 ->get();
 
-    return view('users.index', ['users' => $users]);
+    return view('account.account', compact('listuser'));
 }
 
 
@@ -213,7 +206,13 @@ public function add_cus_auth(Request $request)
     public function cus_delete($id)
     {
         $cus = Customer::find($id);
+        $cus_bill = Bill::where('cus_id', $id)->get();
+        foreach ($cus_bill as $cusb){
+            $cusb_id = ProBill::where('bill_id', $cusb->id)->delete();
+        }
+        Bill::where('cus_id', $id)->delete();
         $cus->delete();
+
         return redirect()->route('lc')
             ->with('success', 'Delete account successful!');
     }
@@ -235,6 +234,7 @@ public function user_information()
 {
     return view('user_information');
 }
+
 
 public function userinfor()
     {
@@ -265,6 +265,7 @@ public function userinfor()
             }
         }
     }
+
 
 
     // public function search_cus(Request $request){
