@@ -11,10 +11,10 @@
                     <p style="display:inline">Bill ID: </p><span>B{{ $bid }}</span>
 
                     <select class="form-select form-select-sm" name="type" style="float:right;width:72px;margin:0px 4px">
-                        <option value="0">In</option>
-                        <option value="1">Out</option>
+                        <option value="0" style="color:mediumblue">Import</option>
+                        <option value="1" style="color:forestgreen">Export</option>
                     </select>
-                    <p style="display:inline;float:right">Type: </p><br><br>
+                    <p style="display:inline;float:right">Type<span style="color:red">*</span>: </p><br><br>
                     <p style="display:inline">Customer: </p>
                     <select class="select2" placeholder="Search..." style="width: 50%" name="cus_id" id="mySelect">
                         @foreach ($customer as $cus)
@@ -44,16 +44,54 @@
                     </div>
                 </div>
                 <div class="bill_add right" style="width: 65%;min-height:500px">
+                    <div>
                     <div class="input-group" style="width: 300px; height: 40px; margin:16px 0px; display:inline-flex">
-                        <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" placeholder="Type here...">
+                        <button type="button" onclick="searchText()" class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></button>
+                        <input id="searchInput" type="text" class="form-control" placeholder="Type here...">
+
                     </div>
-                    <div class="list_product_in_bill">
+                    <nav style="float:right;margin:16px 8px 0px 8px">
+                        <ul class="pagination justify-content-center">
+                            <!-- Previous Page Link -->
+                            @if ($product->onFirstPage())
+                                <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                            @else
+                                <li class="page-item"><a class="page-link" href="{{ $product->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+                            @endif
+
+                            <!-- Pagination Elements -->
+                            @if($product->lastPage() > 1)
+                                @for($i = 1; $i <= $product->lastPage(); $i++)
+                                    @if($i == 1 || $i == $product->currentPage() - 2 || $i == $product->currentPage() - 1 || $i == $product->currentPage() || $i == $product->currentPage() + 1 || $i == $product->currentPage() + 2 || $i == $product->lastPage())
+                                        @if($i == $product->currentPage())
+                                            <li class="page-item active"><span class="page-link">{{ $i }}</span></li>
+                                        @else
+                                            <li class="page-item"><a class="page-link" href="{{ $product->url($i) }}">{{ $i }}</a></li>
+                                        @endif
+                                    @elseif($i == 2 && $product->currentPage() > 4)
+                                        <li class="page-item disabled"><span class="page-link">...</span></li>
+                                    @elseif($i == $product->lastPage() - 1 && $product->currentPage() < $product->lastPage() - 3)
+                                        <li class="page-item disabled"><span class="page-link">...</span></li>
+                                    @endif
+                                @endfor
+                            @endif
+
+                            <!-- Next Page Link -->
+                            @if ($product->hasMorePages())
+                                <li class="page-item"><a class="page-link" href="{{ $product->nextPageUrl() }}" rel="next">&raquo;</a></li>
+                            @else
+                                <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                            @endif
+                        </ul>
+                    </nav>
+                    </div>
+
+                    <div class="list_product_in_bill" id="list_product_in_bill1">
                         @foreach ($product as $product1)
                             <button type="button" onclick=""
                                 @if ($product1->pro_discount <= 0) value="{{ $product1->pro_name }},{{ $product1->unit_price }},{{ $product1->id}}"
-                    @else
-                    value="{{ $product1->pro_name }},{{ $product1->unit_price - ($product1->unit_price * $product1->pro_discount) / 100 }},{{ $product1->id}}" @endif
+                        @else
+                        value="{{ $product1->pro_name }},{{ $product1->unit_price - ($product1->unit_price * $product1->pro_discount) / 100 }},{{ $product1->id}}" @endif
                                 class="list_product_in_bill_single">
                                 <input type="hidden"
                                     value="{{ $image = DB::table('image')->select('img_infor')->where('pro_id', '=', "$product1->id")->get() }}">
@@ -67,24 +105,44 @@
                                         </div>
                                     </div>
                                 @endforeach
-                                <div style="padding: 3px">
-                                    <p style="margin: 0;float: left; font-size:0.9rem; text-align:left">
+                                <div style="padding: 3px;width:60%;display:block" class="pro_single">
+                                    <p style="margin: 0; font-size:0.9rem; text-align:left;width:100%;display:block">
                                         <b>{{ $product1->pro_name }}</b>
-                                    </p><br>
+                                    </p>
                                     @if ($product1->pro_discount <= 0)
-                                        <p style="margin: 0;float: left; color: rgb(0, 190, 0)">
+                                        <p style="margin: 0; color: rgb(0, 190, 0);display:flex;text-align:left;justify-content: space-between;">
                                             {{ $product1->unit_price }}$
+                                            @if ($product1->pro_quantity > 5)
+                                            <span style="margin: 0;float: right;color:#000">
+                                                Am: {{$product1->pro_quantity}}
+                                            </span>
+                                            @else
+                                            <span style="margin: 0;float: right;color: red">
+                                                Am: {{$product1->pro_quantity}}
+                                            </span>
+                                            @endif
                                         </p>
                                     @else
-                                        <p style="margin: 0;float: left; color:rgb(0, 190, 0)">
+                                        <p style="margin: 0; color:rgb(0, 190, 0);display:flex;text-align:left;justify-content: space-between;">
                                             {{ $product1->unit_price - ($product1->unit_price * $product1->pro_discount) / 100 }}$
+                                            @if ($product1->pro_quantity > 5)
+                                            <span style="margin: 0;float: right;color:#000">
+                                                Am: {{$product1->pro_quantity}}
+                                            </span>
+                                            @else
+                                            <span style="margin: 0;float: right;color: red">
+                                                Am: {{$product1->pro_quantity}}
+                                            </span>
+                                            @endif
                                         </p>
                                     @endif
+
                                 </div>
                             </button>
                         @endforeach
 
                     </div>
+
                 </div>
             </div>
         </form>
@@ -228,5 +286,25 @@
             document.getElementById("current_price").value = combinedInputsPrice;
 
         }
+        function searchText() {
+        var searchQuery = document.getElementById("searchInput").value;
+        var buttons = document.querySelectorAll(".pro_single");
+        var found = false;
+
+        for (var i = 0; i < buttons.length; i++) {
+          var pTag = buttons[i].querySelector("p b");
+          if (pTag.innerText.includes(searchQuery)) {
+            buttons[i].parentNode.style.display = "flex";
+            found = true;
+          } else {
+            buttons[i].parentNode.style.display = "none";
+          }
+        }
+
+        if (!found) {
+          alert("No matches found.");
+        }
+      }
     </script>
+
 @endsection

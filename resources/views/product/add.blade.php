@@ -34,12 +34,6 @@
                             value="@if(isset($product)){{$product->unit_price}}@endif">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Quantity </label>
-                        <input name="quantity" type="number" class="form-control" id="exampleFormControlInput1"
-                            placeholder="Quantity of product" required
-                            value="@if(isset($product)){{$product->pro_quantity}}@endif">
-                    </div>
-                    <div class="mb-3">
                         <label for="exampleFormControlInput1">Category of Product</label><br>
                         <select id="productcate" name="category" required>
                             <option value="Default">Choose the category</option>

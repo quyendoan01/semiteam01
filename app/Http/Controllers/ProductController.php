@@ -15,13 +15,12 @@ class ProductController extends Controller
 {
     public function product()
     {
-        $product = Product::latest()->paginate(15);
+        $product = Product::latest()->paginate(8);
         $category= Category::all();
 
 
 
         return view('product.product', compact('product','category'))
-
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -77,7 +76,19 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
-        return view('product.show', ['product' => $product]);
+        $pro_count = DB::table('pro-bill')->where('pro_id', $id)->get();
+        $pro_sold = 0;
+        foreach ($pro_count as $pro_c){
+            $bill = DB::table('bill')->where('id', $pro_c->bill_id)->get();
+            foreach ($bill as $bill){
+                if($bill->type == 1){
+                    $pro_sold += $pro_c->pro_amount;
+                }
+            }
+
+        }
+
+        return view('product.show', compact('product','pro_sold'));
     }
     public function edit($id)
     {
@@ -145,15 +156,14 @@ class ProductController extends Controller
     {
         $query = $request->search;
         $category= Category::all();
-
         $product = Product::where('pro_name', 'LIKE', "%$query%")
-                            ->get();
+                            ->paginate(8);
 
         return view('product.product', compact('product','category'));
     }
     public function sortByPrice($order = 'asc')
     {
-        $product = Product::orderBy('unit_price', $order)->get();
+        $product = Product::orderBy('unit_price', $order)->paginate(8);
         $category= Category::all();
 
         return view('product.product', compact('product','category'));
@@ -166,7 +176,7 @@ class ProductController extends Controller
         $cate = DB::table('category')->where('cat_name','=',"$cat")->first();
         $query = $cate->id;
 
-        $product = Product::where('cat_id', '=', "$query")->get();
+        $product = Product::where('cat_id', '=', "$query")->paginate(8);
 
         return view('product.product', compact('product','category'));
     }
