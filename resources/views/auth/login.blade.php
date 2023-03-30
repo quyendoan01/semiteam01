@@ -2,29 +2,28 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-<<<<<<< HEAD
+
   <title>Login Page in HTL with CSS Code Example</title>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
    
     
    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"><link rel="stylesheet" href="{{ asset('css/login.css') }}">
-=======
+
   <title>Login Page in HTML with CSS Code Example</title>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"><link rel="stylesheet" href="{{ asset('css/login.css') }}">
->>>>>>> d3
+
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<<<<<<< HEAD
- 
-=======
 
->>>>>>> d3
+
+
+
 <div class="box-form" style="margin-top: 3cm;"> 
 	<div class="left">
 		<div class="overlay">
@@ -39,7 +38,7 @@
 	</div>
     
 
-<<<<<<< HEAD
+
  
 @section('content')
     
@@ -48,62 +47,8 @@
 	
 
 
-<!-- partial -->
  
-@extends('layouts.app')
 
-
-
-                            @csrf
-
-                   
-         <div class="row mb-3" style="padding-left: 1.5cm;">
-                                <P>Email Address</P>
-
-                    
-            <div class="col-md-6">
-                                    <input id="email" type="email "
-                                        class="form-control @error('email') is-invalid @enderror" name="email"
-                    
-                    value="{{ old('email') }}" required autocomplete="email" autofocus 
-                                        style="width: 8cm;">
-
-                       
-             @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                       
-                 </span>
-                                    @enderror
-                                </div>
-                             </div>
-    
-
-
-                            <div class="row mb-3" style="padding-left: 1.5cm;">
-                       
-     
-         <p>Password</p>
-
-                                <div class="col-md-6">
-                        
-     
-            <input id="password" type="password"
-                                        class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="current-password"
-                                        style="width: 8cm;">
-
-                                    @error('password')
-=======
-
-@section('content')
-    
-<div class="card-body">
-    <form method="POST" action="{{ route('login_auth') }}">
-	
-</div>
-
-<!-- partial -->
   
 </body>
 </html>
@@ -122,23 +67,17 @@
                                         style="width: 8cm;">
 
                                     @error('email')
->>>>>>> d3
+
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
                             </div>
-<<<<<<< HEAD
-							<p style="padding-left: 1.5cm;">Don't have an account? <a href="{{ route('register') }}">Create Your Account</a> it takes less than a minute</p>
 
-                            <div class="row mb-3">
-                                <div class="col-md-6 offset-md-4">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="remember" id="remember"
-                                            {{ old('remember') ? 'checked' : '' }}>
+							
 
-=======
+
 
                             <div class="row mb-3" style="padding-left: 1.5cm;">
                                 <p>Password</p>
@@ -164,7 +103,7 @@
                                         <input class="form-check-input" type="checkbox" name="remember" id="remember"
                                             {{ old('remember') ? 'checked' : '' }}>
 
->>>>>>> d3
+
                                         <label class="form-check-label" for="remember">
                                             {{ __('Remember Me') }}
                                         </label>
@@ -204,9 +143,5 @@
                  </div>
 @endsection 
 
-<<<<<<< HEAD
+
   
-</body>
-</html>
-=======
->>>>>>> d3

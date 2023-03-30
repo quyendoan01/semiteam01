@@ -40,6 +40,7 @@ Route::get('/auth/edit/{id}',[UserController::class,'cus_edit'])->name('cus_edit
 Route::get('/auth/delete/{id}',[UserController::class,'cus_delete'])->name('cus_delete');
 Route::get('/userinfo', [UserController::class, 'userinfo'])->name('userinfo');
 Route::get('/user_information', [UserController::class, 'user_information'])->name('user_information');
+Route::get('/auth/userinfo', [UserController::class, 'userinfor'])->name('userinfor')->middleware('auth');
 
 
 
@@ -53,6 +54,7 @@ Route::post('/product/store', [ProductController::class, 'store'])->name('produc
 Route::get('/product/search', [ProductController::class,'search'])->name('product.search');
 Route::get('/product/sort-by-price/{order?}', [ProductController::class, 'sortByPrice'])->name('product.sortByPrice');
 Route::get('/product/filter/{cat?}', [ProductController::class,'filter'])->name('product.filter');
+Route::post('/user/edit', [CategoryController::class, 'edit'])->name('user.edit');
 
 
 Route::get('/category', [CategoryController::class, 'category'])->name('category');

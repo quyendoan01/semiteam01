@@ -193,7 +193,7 @@ public function add_cus_auth(Request $request)
     }
 
     public function cus_edit_auth(Request $request)
-    {
+    {   
         if ($request->isMethod('POST')) {
             $cus = Customer::find($request->id);
             if ($cus != null) {
@@ -225,7 +225,7 @@ public function add_cus_auth(Request $request)
         return view('lc', ['cus' => $cus]);
     }
 
-<<<<<<< HEAD
+
     public function userinfo()
 {
     return view('auth.userinfo');
@@ -236,8 +236,37 @@ public function user_information()
     return view('user_information');
 }
 
-=======
->>>>>>> d62a498f2b1c7f488b6f2febd6d8e5013ccd6405
+public function userinfor()
+    {
+        return view('auth.userinfo');
+    }
+
+    public function usercheckpass()
+    {
+        return view('auth.userinfo');
+    }
+
+    public function user_edit_info(Request $request)
+    {
+        if ($request->isMethod('POST')) {
+            $currentuser = User::find($request->id);
+            if ($currentuser != null) {
+                $currentuser->user_full_name = $request->user_full_name;
+                $currentuser->user_name = $request->user_name;
+                $currentuser->user_email = $request->user_email;
+                $currentuser->role = $request->role;
+                $currentuser->password = $request->password;
+                $currentuser->save();
+                return redirect()->route('userinfor')
+                    ->with('success', 'Account update successful!');
+            } else {
+                return redirect()->route('userinfor')
+                    ->with('danger', 'Account not updated');
+            }
+        }
+    }
+
+
     // public function search_cus(Request $request){
     //     $search = $request->keyWord;
 
