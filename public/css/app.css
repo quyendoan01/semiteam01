@@ -206,10 +206,11 @@ body {
         text-align: center;
     }
     .price {
-        width: 50px;
+        width: 80px;
         color: rgb(0, 190, 0);
         margin: 0px;
         text-align: center;
+        border: none;
         box-shadow: 1px 2px rgb(0, 78, 0);
     }
     .quantity {

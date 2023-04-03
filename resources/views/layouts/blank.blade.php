@@ -116,13 +116,19 @@
         @yield('content')
     </main>
     <script>
-        function show_cat() {
           var x = document.getElementById("div_category");
+          var cat2 = document.getElementById("div_category2");
+        function show_cat() {
           if (x.style.display === "none") {
+            cat2.style.display = "none";
             x.style.display = "block";
           } else {
             x.style.display = "none";
           }
+        }
+        function showcat2(){
+                x.style.display = "none";
+                cat2.style.display = "block";
         }
         </script>
 </body>

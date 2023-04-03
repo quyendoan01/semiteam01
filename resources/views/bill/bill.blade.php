@@ -70,7 +70,7 @@
                             @foreach ($bill_id as $bi)
                             <tr>
                                 <td>
-                                    <a style="text-decoration:none;color:brown"
+                                    <a
                                         href="{{ route('show_bill', $bi->id) }}">B{{ $bi->id }}
                                     </a>
                                 </td>

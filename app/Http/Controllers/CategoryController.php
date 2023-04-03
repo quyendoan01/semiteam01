@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Bill;
+use App\Models\Product;
+use App\Models\ProBill;
 use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
@@ -12,7 +15,7 @@ class CategoryController extends Controller
     {
         $categories = Category::latest()->paginate(5);
 
-        return view('category', compact('categories'))
+        return view('category.index', compact('categories'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     public function create()
@@ -71,11 +74,16 @@ class CategoryController extends Controller
             }
         }
     }
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $category = Category::find($id);
+        $category = Category::select('id')->where('cat_name', $request->category)->first();
+        $product = Product::where('cat_id', $category)->get();
+        foreach ($product as $pro){
+            $pro_bill = ProBill::where('pro_id', $pro->id)->delete();
+        }
+        $product->delete();
         $category->delete();
-        return redirect()->route('category.index')
+        return redirect()->route('product.create')
             ->with('success','Delete successfully');
     }
 }

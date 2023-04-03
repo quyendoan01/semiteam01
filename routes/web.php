@@ -56,20 +56,20 @@ Route::get('/product/sort-by-price/{order?}', [ProductController::class, 'sortBy
 Route::get('/product/filter/{cat?}', [ProductController::class,'filter'])->name('product.filter');
 
 
-Route::get('/category', [CategoryController::class, 'category'])->name('category');
+Route::get('/category', [CategoryController::class, 'index'])->name('category');
 Route::get('/category/add', [CategoryController::class, 'create'])->name('category.create');
-Route::get('/category/delete/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
-Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+Route::post('/category/delete', [CategoryController::class, 'destroy'])->name('category.destroy');
+Route::get('/category/edit', [CategoryController::class, 'edit'])->name('category.edit');
 Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
 Route::get('/category/show/{id}', [CategoryController::class, 'show'])->name('category.show');
 Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
 
 
 Route::get('/account', [UserController::class, 'account'])->name('account')->middleware('auth');
-Route::get('/account/add', [UserController::class, 'add_account'])->name('add_account')->middleware('auth');
+Route::get('/account/add', [UserController::class, 'add_account'])->name('add_account');
 Route::get('/account/edit/{id}',[UserController::class,'user_edit'])->name('user_edit')->middleware('auth');
 Route::get('/account/delete/{id}',[UserController::class,'user_delete'])->name('user_delete')->middleware('auth');
-Route::post('/account/add/auth', [UserController::class, 'add_acc_auth'])->name('add_acc_auth')->middleware('auth');
+Route::post('/account/add/auth', [UserController::class, 'add_acc_auth'])->name('add_acc_auth');
 Route::post('/account/edit/auth',[UserController::class,'user_edit_auth'])->name('user_edit_auth')->middleware('auth');
 Route::get('/account/search', [UserController::class,'search'])->name('account.search');
 

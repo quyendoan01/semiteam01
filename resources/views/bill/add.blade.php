@@ -10,17 +10,18 @@
                 <div class="bill_add_left" style="width: 35%;padding:16px">
                     <p style="display:inline">Bill ID: </p><span>B{{ $bid }}</span>
 
-                    <select class="form-select form-select-sm" name="type" style="float:right;width:72px;margin:0px 4px">
+                    <select class="form-select form-select-sm" name="type" style="float:right;width:72px;margin:0px 4px" required>
                         <option value="0" style="color:mediumblue">Import</option>
                         <option value="1" style="color:forestgreen">Export</option>
                     </select>
                     <p style="display:inline;float:right">Type<span style="color:red">*</span>: </p><br><br>
                     <p style="display:inline">Customer: </p>
-                    <select class="select2" placeholder="Search..." style="width: 50%" name="cus_id" id="mySelect">
+                    <select class="select2" placeholder="Search..." style="width: 50%" name="cus_id" id="mySelect" required>
                         @foreach ($customer as $cus)
                             <option value="{{ $cus->id }}">{{ $cus->cus_name }}</option>
                         @endforeach
                     </select>
+                    <a href="{{route('addlc')}}" style="margin:0px 4px; text-decoration:none">+</a>
                     <br><br>
                     <label for="date" style="font-size: 0.9rem">Date:</label>
                     <input type="date" id="date" name="date">
@@ -50,6 +51,7 @@
                         <input id="searchInput" type="text" class="form-control" placeholder="Type here...">
 
                     </div>
+                    <a href="{{route('product.create')}}" style="margin: 0px 16px; text-decoration:none;font-size:1rem"> + Add new Product</a>
                     <nav style="float:right;margin:16px 8px 0px 8px">
                         <ul class="pagination justify-content-center">
                             <!-- Previous Page Link -->
@@ -188,7 +190,7 @@
                 var newButton = document.createElement("button");
                 var newBr = document.createElement("br");
                 var newInput = document.createElement("input");
-                var newP3 = document.createElement("p");
+                var newP3 = document.createElement("input");
                 var newInput2 = document.createElement("input");
 
                 secondDiv.className = "bill_middle_product";
@@ -215,8 +217,10 @@
                 newInput.value = 1;
                 newInput.style.textAlign = "center";
                 newP3.style.float = "right";
-                newP3.innerHTML = bValueSp[1] + "$";
+                newP3.value = bValueSp[1];
                 newP3.className = "price";
+                newP3.type = "number";
+                newP3.step = "0.01";
                 newP3.value = bValueSp[1];
 
 

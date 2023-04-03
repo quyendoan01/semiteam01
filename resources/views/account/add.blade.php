@@ -1,4 +1,4 @@
-@extends('layouts.appad')
+@extends('layouts.blank')
 
 @section('content')
 

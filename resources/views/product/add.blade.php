@@ -34,11 +34,21 @@
                             value="@if(isset($product)){{$product->unit_price}}@endif">
                     </div>
                     <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Quantity </label>
+                        <input name="quantity" type="hidden" class="form-control" id="exampleFormControlInput1"
+                            placeholder="Quantity of product" required
+                            @if(isset($product))
+                                value="{{$product->pro_quantity}}"
+                            @else
+                                value="0"
+                            @endif>
+                    </div>
+                    <div class="mb-3">
                         <label for="exampleFormControlInput1">Category of Product</label><br>
                         <select id="productcate" name="category" required>
-                            <option value="Default">Choose the category</option>
-                            @foreach ($category as $category)
-                                <option value="{{ $category->cat_name }}">{{ $category->cat_name }}</option>
+                            <option value="">Choose the category</option>
+                            @foreach ($category as $cat)
+                                <option value="{{ $cat->cat_name }}">{{ $cat->cat_name }}</option>
                             @endforeach
                         </select>
                         <a class="add_new_role" onclick="show_cat()" href="#" style="text-decoration:none"><strong> +
@@ -77,8 +87,29 @@
                         placeholder="Name of new Category">
                 </div>
                 <div class="mb-3">
-                    <button type="button" class="btn btn-secondary">Edit</button>
+                    <a href="#"><button onclick="showcat2()" type="button" class="btn btn-secondary">Edit</button><a>
                     <button style="float:right" type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </form>
+
+        </div>
+        <div class="div_category" id="div_category2" style="display:none">
+            <form method="POST" action="{{route('category.destroy')}}" enctype="multipart/form-data">
+                @csrf
+                <div class="mb-3">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1">Category of Product</label><br>
+                        <select id="productcate" name="category" required>
+                            <option value="">Choose the category</option>
+                            @foreach ($category as $cate)
+                                <option value="{{ $cate->cat_name }}">{{ $cate->cat_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <a href="#"><button style="float:right" type="submit" class="btn btn-danger">Delete</button><a>
+
                 </div>
             </form>
         </div>

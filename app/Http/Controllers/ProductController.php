@@ -30,7 +30,7 @@ class ProductController extends Controller
     {
 
         $category = Category::all();
-        return view('product.add', ['category' => $category]);
+        return view('product.add', compact('category'));
     }
     public function store(Request $request)
     {

@@ -72,40 +72,4 @@
             </div>
         </div>
     </div>
-    <input type="text" id="searchInput" placeholder="Enter text to search">
-    <button onclick="searchText()">Search</button>
-
-    <div class="container">
-      <button>
-        <p><b>This is the first paragraph.</b></p>
-      </button>
-      <button>
-        <p><b>This is the second paragraph.</b></p>
-      </button>
-      <button>
-        <p><b>This is the third paragraph.</b></p>
-      </button>
-    </div>
-
-    <script>
-      function searchText() {
-        var searchQuery = document.getElementById("searchInput").value;
-        var buttons = document.querySelectorAll(".container button");
-        var found = false;
-
-        for (var i = 0; i < buttons.length; i++) {
-          var bTag = buttons[i].querySelector("p b");
-          if (bTag.innerText.includes(searchQuery)) {
-            buttons[i].style.display = "block";
-            found = true;
-          } else {
-            buttons[i].style.display = "none";
-          }
-        }
-
-        if (!found) {
-          alert("No matches found.");
-        }
-      }
-    </script>
 @endsection

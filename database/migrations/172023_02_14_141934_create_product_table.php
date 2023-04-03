@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('cat_id')->constrained('category');
             $table->string('pro_name');
-            $table->integer('unit_price')->default(0);
+            $table->decimal('unit_price')->default(0);
             $table->integer('pro_quantity')->default(0);
             $table->string('pro_origin')->nullable();
             $table->integer('pro_discount')->nullable();

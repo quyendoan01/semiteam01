@@ -2,7 +2,9 @@
 
 @section('content')
     <!-- Navbar -->
-
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+    </script>
     <!-- End Navbar -->
     <div class="container-fluid">
         <div class="container-fluid">
@@ -14,19 +16,30 @@
                             <div class="row">
                                 <div class="col-8">
                                     <div class="numbers">
-                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Money</p>
-                                        <h5 class="font-weight-bolder">
-                                            $53,000
-                                        </h5>
+                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Trade</p>
+                                        <h4 class="font-weight-bolder" style="color: purple">
+                                            @if (isset($total_5_days))
+                                                ${{number_format( (float) $total_5_days[4], 2, '.', ',')}}
+                                            @endif
+                                        </h4>
                                         <p class="mb-0">
-                                            <span class="text-success text-sm font-weight-bolder">+55%</span>
+                                            @if ($total_5_days[3] > 0)
+                                                @if ($total_5_days[4] >= $total_5_days[3])
+                                                    <span class="text-success text-sm font-weight-bolder">+{{number_format(( (float) $total_5_days[4]/ (float) $total_5_days[3]*100 - 100) ,2)}}%</span>
+                                                @else
+                                                    <span class="text-warning text-sm font-weight-bolder">{{number_format(( (float) $total_5_days[4]/(float)$total_5_days[3]*100 - 100),2)}}%</span>
+                                                @endif
+                                            @else
+                                                <span class="text-success text-sm font-weight-bolder">{{number_format(( (float) $total_5_days[4]),2)}}%</span>
+                                            @endif
+
                                             since yesterday
                                         </p>
                                     </div>
                                 </div>
                                 <div class="col-4 text-end">
                                     <div
-                                        class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
+                                        class="icon icon-shape bg-gradient-danger shadow-primary text-center rounded-circle">
                                         <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
                                     </div>
                                 </div>
@@ -40,19 +53,28 @@
                             <div class="row">
                                 <div class="col-8">
                                     <div class="numbers">
-                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Users</p>
+                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Client</p>
                                         <h5 class="font-weight-bolder">
-                                            2,300
+                                            {{number_format(count($client_today), 0, ',')}}
                                         </h5>
                                         <p class="mb-0">
-                                            <span class="text-success text-sm font-weight-bolder">+3%</span>
-                                            since last week
+                                            @if (count($client_yesterday) > 0)
+                                            @if (count($client_today) >= count($client_yesterday))
+                                            <span class="text-success text-sm font-weight-bolder">+{{ number_format(count($client_today)/count($client_yesterday)*100 - 100,2)}}%</span>
+                                        @else
+                                            <span class="text-warning text-sm font-weight-bolder">{{number_format(count($client_today)/count($client_yesterday)*100 - 100,2)}}%</span>
+                                        @endif
+                                            @else
+                                            <span class="text-success text-sm font-weight-bolder">+{{ number_format(count($client_today))}}%</span>
+                                            @endif
+
+                                            since yesterday
                                         </p>
                                     </div>
                                 </div>
                                 <div class="col-4 text-end">
                                     <div
-                                        class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
+                                        class="icon icon-shape bg-gradient-dark shadow-danger text-center rounded-circle">
                                         <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
                                     </div>
                                 </div>
@@ -66,19 +88,32 @@
                             <div class="row">
                                 <div class="col-8">
                                     <div class="numbers">
-                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">New Clients</p>
-                                        <h5 class="font-weight-bolder">
-                                            +3,462
+                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Import</p>
+                                        <h5 class="font-weight-bolder" style="color: mediumblue">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-down" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M3.5 6a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 1 0-1h2A1.5 1.5 0 0 1 14 6.5v8a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-8A1.5 1.5 0 0 1 3.5 5h2a.5.5 0 0 1 0 1h-2z"/>
+                                                <path fill-rule="evenodd" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                                              </svg>
+                                            {{number_format( (float) $import_5_days[4], 2, '.', ',')}}$
                                         </h5>
                                         <p class="mb-0">
-                                            <span class="text-danger text-sm font-weight-bolder">-2%</span>
-                                            since last quarter
+                                            @if ($import_5_days[3] > 0)
+                                            @if ($import_5_days[4] >= $import_5_days[3])
+                                                <span class="text-success text-sm font-weight-bolder">+{{number_format(( (float) $import_5_days[4]/ (float) $import_5_days[3]*100 - 100) ,2)}}%</span>
+                                            @else
+                                                <span class="text-warning text-sm font-weight-bolder">{{number_format(( (float) $import_5_days[4]/ (float) $import_5_days[3]*100 - 100) ,2)}}%</span>
+                                            @endif
+                                            @else
+                                            <span class="text-success text-sm font-weight-bolder">{{number_format(( (float) $import_5_days[4]) ,2)}}%</span>
+                                            @endif
+
+                                            since yesterday
                                         </p>
                                     </div>
                                 </div>
                                 <div class="col-4 text-end">
                                     <div
-                                        class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
+                                        class="icon icon-shape bg-gradient-info shadow-success text-center rounded-circle">
                                         <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
                                     </div>
                                 </div>
@@ -92,19 +127,33 @@
                             <div class="row">
                                 <div class="col-8">
                                     <div class="numbers">
-                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Sales</p>
-                                        <h5 class="font-weight-bolder">
-                                            $103,430
+                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Export</p>
+                                        <h5 class="font-weight-bolder" style="color: forestgreen">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M3.5 6a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 1 0-1h2A1.5 1.5 0 0 1 14 6.5v8a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-8A1.5 1.5 0 0 1 3.5 5h2a.5.5 0 0 1 0 1h-2z"/>
+                                                <path fill-rule="evenodd" d="M7.646.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 1.707V10.5a.5.5 0 0 1-1 0V1.707L5.354 3.854a.5.5 0 1 1-.708-.708l3-3z"/>
+                                              </svg>
+                                        {{number_format( (float) $export_5_days[4], 2, '.', ',')}}$
+
                                         </h5>
                                         <p class="mb-0">
-                                            <span class="text-success text-sm font-weight-bolder">+5%</span> than last
-                                            month
+                                            @if ($export_5_days[3] > 0)
+                                            @if ($export_5_days[4] >= $export_5_days[3])
+                                            <span class="text-success text-sm font-weight-bolder">+{{number_format(( (float) $export_5_days[4]/ (float) $export_5_days[3]*100 - 100) ,2)}}%</span>
+                                        @else
+                                            <span class="text-warning text-sm font-weight-bolder">{{number_format(( (float) $export_5_days[4]/ (float) $export_5_days[3]*100 - 100) ,2)}}%</span>
+                                        @endif
+                                        @else
+                                        <span class="text-success text-sm font-weight-bolder">+{{number_format(( (float) $export_5_days[4]))}}%</span>
+                                            @endif
+
+                                            since yesterday
                                         </p>
                                     </div>
                                 </div>
                                 <div class="col-4 text-end">
                                     <div
-                                        class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
+                                        class="icon icon-shape bg-gradient-success shadow-warning text-center rounded-circle">
                                         <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
                                     </div>
                                 </div>
@@ -117,16 +166,16 @@
                 <div class="col-lg-7 mb-lg-0 mb-4">
                     <div class="card z-index-2 h-100">
                         <div class="card-header pb-0 pt-3 bg-transparent">
-                            <h6 class="text-capitalize">Sales overview</h6>
+                            <h5 class="text-capitalize"><b>Sales overview</b></h5>
                             <p class="text-sm mb-0">
-                                <i class="fa fa-arrow-up text-success"></i>
-                                <span class="font-weight-bold">4% more</span> in 2021
+                                The last <span class="font-weight-bold">5 days</span>
                             </p>
                         </div>
                         <div class="card-body p-3">
                             <div class="chart">
-                                <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
+                                <canvas id="saleChart" style="width:100%;max-width:700px"></canvas>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -414,34 +463,51 @@
                                     document.write(new Date().getFullYear())
                                 </script>,
                                 made with <i class="fa fa-heart"></i> by
-                                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative
-                                    Tim</a>
-                                for a better web.
+                                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Semi T1</a>
                             </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                                <li class="nav-item">
-                                    <a href="https://www.creative-tim.com" class="nav-link text-muted"
-                                        target="_blank">Creative Tim</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted"
-                                        target="_blank">About Us</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="https://www.creative-tim.com/blog" class="nav-link text-muted"
-                                        target="_blank">Blog</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted"
-                                        target="_blank">License</a>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>
             </footer>
         </div>
     </div>
+    <script>
+        const xValues = [];
+        var totalValue = {{$jtotal_5_days}};
+        var importValue = {{$jimport_5_days}};
+        var exportValue = {{$jexport_5_days}};
+
+for (let i = 0; i <= 4; i++) {
+  let date = new Date();
+  date.setDate(date.getDate() - i);
+  let formattedDate = date.toLocaleDateString(undefined, { month: 'long', day: 'numeric' });
+  xValues.unshift(formattedDate);
+}
+
+
+
+
+new Chart("saleChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      data: totalValue,
+      borderColor: "red",
+      fill: false
+    }, {
+      data: exportValue,
+      borderColor: "green",
+      fill: false
+    }, {
+      data: importValue,
+      borderColor: "blue",
+      fill: false
+    }]
+  },
+  options: {
+    legend: {display: false}
+  }
+});
+        </script>
 @endsection
