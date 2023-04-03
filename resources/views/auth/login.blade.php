@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <title>Login Page in HTL with CSS Code Example</title>
@@ -14,9 +15,11 @@
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 
 
+
 </head>
 
 <body>
+
     <!-- partial:index.partial.html -->
 
     <div class="box-form" style="margin-top: 3cm;">
@@ -26,11 +29,14 @@
 
                 <span>
 
+
                     <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                     <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Login with Twitter</a>
                 </span>
             </div>
         </div>
+
+
 
         @section('content')
             <div class="card-body">
@@ -47,6 +53,7 @@
                     @csrf
 
 
+
                     <div class="row mb-3" style="padding-left: 1.5cm;">
                         <P>Email Address</P>
 
@@ -57,6 +64,7 @@
                                 style="width: 8cm;">
 
 
+
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -64,7 +72,9 @@
                                 </span>
                             @enderror
                         </div>
+
                     </div>
+
 
 
 
@@ -140,3 +150,4 @@
 </body>
 
 </html>
+

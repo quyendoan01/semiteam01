@@ -193,6 +193,10 @@
                                             {{ Auth::user()->user_name }}
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        
+
+                                            
+
                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
@@ -203,13 +207,19 @@
                                                 class="d-none">
                                                 @csrf
                                             </form>
+
+                                            
                                         </div>
+
+                                        
                                     </li>
+
+                                    
                                 @endguest
                             </ul>
                         </li>
                         <li class="nav-item px-3 d-flex align-items-center">
-                            <a href="javascript:;" class="nav-link text-white p-0">
+                            <a href="{{ url('auth/userinfo') }}" class="nav-link text-white p-0"> 
                                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
                             </a>
                         </li>

@@ -181,8 +181,11 @@ body {
         height: auto;
     }
     .test123 img {
-        border-radius: 8px;
-    }
+        border-radius: 50%;
+        width:200px;
+        height:200px;
+
+      }
     .select_item_product {
         width: 90%;
     }
@@ -235,4 +238,5 @@ body {
     .list_product_in_bill_single:hover {
         background-color: #e3e3e3;
     }
+
 }

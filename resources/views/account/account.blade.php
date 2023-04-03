@@ -3,6 +3,7 @@
 @section('content')
     <div class="container-fluid">
 
+
         <div class="container-fluid">
             <form action="{{ route('account.search') }}" method="GET">
                 @csrf
@@ -16,6 +17,7 @@
 
                         </div>
                     </form>
+
 
             <a href="{{ url('account/add') }}"> <button style="" type="button"
                     class="add_staff btn btn-secondary">Add account</button>
@@ -72,3 +74,4 @@
                         </tbody>
                     </table>
         @endsection
+
