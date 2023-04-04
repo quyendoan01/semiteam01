@@ -7,8 +7,9 @@
         <div class="container-fluid">
             <form action="{{ route('account.search') }}" method="GET">
                 @csrf
-                <div class="container-fluid">
-                    <form action="{{ route('account.search') }}" method="GET">
+                <div class="container-fluida" style="display:flex;justify-content: space-between;
+                align-items: center;">
+                    <form action="{{ route('account.search') }}" method="GET" style="display:inline">
                         @csrf
                         <div class="input-group" style="width: 300px; height: 40px; margin:16px 0px; display:flex">
                             <button class="input-group-text text-body" type="submit"><i class="fas fa-search"
@@ -16,12 +17,15 @@
                             <input name="search" type="text" class="form-control" placeholder="Type here...">
 
                         </div>
+                        <div style="display:inline">
+                        <a href="{{ url('account/add') }}"> <button style="" type="button"
+                            class="add_staff btn btn-secondary">Add account</button>
+                    </a></div>
                     </form>
+                </div>
 
 
-            <a href="{{ url('account/add') }}"> <button style="" type="button"
-                    class="add_staff btn btn-secondary">Add account</button>
-            </a>
+
 
 
                     <div class="mng_staff">
@@ -38,7 +42,6 @@
                                 <strong>{{ session('danger') }}</strong>
                             </span>
                         @endif
-                    </div>
                     <table class="acc_table table table-striped">
                         <thead>
                             <tr>
@@ -63,7 +66,7 @@
                                             <a href="{{ route('user_edit', $video->id) }}"><button type="button"
                                                     class="btn btn-primary" style="margin:2px">Edit</button></a>
                                             @if ($video->id != 1)
-                                                    <a href="{{ route('user_delete', $video->id) }}"><button type="button"
+                                                <a href="{{ route('user_delete', $video->id) }}"><button type="button"
                                                         class="btn btn-danger" style="margin:2px">Delete</button></a>
                                             @endif
 
@@ -73,5 +76,4 @@
                             @endif
                         </tbody>
                     </table>
-        @endsection
-
+                @endsection

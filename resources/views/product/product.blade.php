@@ -21,11 +21,14 @@
 
                 </div>
             </form>
+            @if (Auth::user()->role == 'manageracc' || Auth::user()->role == 'stocker')
             <div class="float:right;display:inline">
                 <a style="margin:auto" href="{{ route('product.create') }}"><button
                         class="add_product btn btn-secondary">Add
                         Product</button></a>
             </div>
+            @endif
+
         </div>
     </div>
 

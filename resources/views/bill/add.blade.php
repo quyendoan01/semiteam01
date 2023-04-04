@@ -176,10 +176,12 @@
             div.parentNode.removeChild(div);
             updateTotal();
         }
-
+        var listProductInBill = [];
         myButtons.forEach(button => {
             button.addEventListener("click", function() {
-                var buttonValue = this.value;
+                if (!listProductInBill.includes(this.value)){
+                    listProductInBill.push(this.value);
+                    var buttonValue = this.value;
                 var bValueSp = buttonValue.split(",");
 
 
@@ -242,6 +244,8 @@
 
                 // update the total
                 updateTotal();
+                }
+
             });
 
 

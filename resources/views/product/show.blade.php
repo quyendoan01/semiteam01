@@ -11,8 +11,10 @@
                         style="margin: 0px 4px">Back</button></a>
             </div>
             <div style="width: 90%"></div>
+            @if (Auth::user()->role == 'manageracc' || Auth::user()->role == 'stocker')
             <a href="{{route('product.edit',$product->id)}}"><button class="btn btn-primary" style="float:right; margin: 0px 4px">Edit</button></a>
             <a href="{{route('product.destroy',$product->id)}}"><button class="btn btn-danger" style="float: right; margin: 0px 4px">Delete</button></a>
+        @endif
         </div>
         <div class="pro_show">
             <input type="hidden" value="{{ $image = DB::table('image')->select('img_infor')->where('pro_id', '=', "$product->id")->get() }}">

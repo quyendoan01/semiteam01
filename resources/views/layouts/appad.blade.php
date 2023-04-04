@@ -108,19 +108,6 @@
                             </span>
                         </a>
                     </li>
-                @else
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" style="">
-
-                            <div
-                                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="fa fa-address-book-o text-muted text-sm opacity-10"></i>
-                            </div>
-                            <span class="nav-link-text ms-1" style="color:#d3d3d3">
-                                Account
-                            </span>
-                        </a>
-                    </li>
                 @endif
 
                 <li class="nav-item mt-3">
@@ -193,9 +180,9 @@
                                             {{ Auth::user()->user_name }}
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        
 
-                                            
+
+
 
                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
@@ -208,18 +195,18 @@
                                                 @csrf
                                             </form>
 
-                                            
+
                                         </div>
 
-                                        
+
                                     </li>
 
-                                    
+
                                 @endguest
                             </ul>
                         </li>
                         <li class="nav-item px-3 d-flex align-items-center">
-                            <a href="{{ url('auth/userinfo') }}" class="nav-link text-white p-0"> 
+                            <a href="{{ url('auth/userinfo') }}" class="nav-link text-white p-0">
                                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
                             </a>
                         </li>

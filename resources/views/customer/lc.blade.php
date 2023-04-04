@@ -11,9 +11,11 @@
                     <input type="text" class="form-control" placeholder="Type here...">
                 </div>
                 <div style="float:right;align-items: center;display:flex;margin: 4px 0px">
+                    @if (Auth::user()->role == 'manageracc' || Auth::user()->role == 'stocker')
                 <a href="{{ url('addlc') }}"> <button style="margin:auto" type="button"
                         class="add_cus btn btn-secondary">Add account</button>
                 </a>
+                @endif
             </div>
             <br>
             <br>
@@ -50,11 +52,13 @@
                                 <td scope="col">{{ $cuss->cus_address }}</td>
                                 <td scope="col">{{ $cuss->cus_phone }}</td>
                                 <td scope="col">
+                                    @if (Auth::user()->role == 'manageracc' || Auth::user()->role == 'stocker')
                                 <a href="{{ route('cus_edit', $cuss->id) }}"><button type="button"
                                             class="btn btn-primary" style="margin:2px">Edit</button></a>
 
                                         <a href="{{ route('cus_delete', $cuss->id) }}"><button type="button"
                                                 class="btn btn-danger" style="margin:2px">Delete</button></a>
+                                                @endif
                                 </td>
                             </tr>
                         @endforeach
