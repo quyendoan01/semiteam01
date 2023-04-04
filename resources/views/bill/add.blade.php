@@ -1,7 +1,15 @@
 @extends('layouts.blank')
 
 @section('content')
+
     <div class="container-fluid">
+
+        @if (session('alert'))
+            <script>
+                alert('{{ session('alert') }}');
+            </script>
+         @endif
+
         <form method="POST" enctype="multipart/form-data" action="{{ route('store_bill') }}">
             @csrf
 

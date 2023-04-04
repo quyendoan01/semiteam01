@@ -98,6 +98,7 @@ class BillController extends Controller
                     $check_quan = DB::table('product')->where('id', $productNameArr[$i])->first();
                     if ($check_quan->pro_quantity < $proAmountArr[$i]) {
                         $checked = False;
+                        session()->flash('alert', 'Not enough product amount in store!');
                         return redirect()->route('add_bill', )
                             ->with('failed', 'Not enough product amount in store!');
                     }
