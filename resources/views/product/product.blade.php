@@ -28,14 +28,11 @@
                         Product</button></a>
             </div>
             @endif
-
         </div>
     </div>
-
     <div class="container-fluid">
         <div class="container-fluid">
             <div class="home-filter">
-
                 <div class="home-filter-control">
                     <p class="home-filter-title">Sort by: </p>
                     <div class="btn home-filter-sort">
@@ -45,7 +42,6 @@
                         <i class="fas fa-sort-amount-down-alt"></i>
                         <ul class="home-filter-sort-list">
                             <li>
-
                                 <a href="{{ route('product.sortByPrice', 'desc') }}" class="home-filter-sort-item-link">
                                     Decreasing
                                     <i class="fas fa-sort-amount-down-alt"></i>

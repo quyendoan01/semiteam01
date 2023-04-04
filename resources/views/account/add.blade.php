@@ -1,7 +1,11 @@
 @extends('layouts.blank')
 
 @section('content')
-
+<div class="container-fluid">
+    <div class="add_bill">
+            <a href="{{ route('account') }}"><button type="button" class="back_btn btn btn-secondary">Back</button></a>
+    </div>
+</div>
     <div class="container-fluid">
         <div class="add_account">
             <div class="container-fluid">

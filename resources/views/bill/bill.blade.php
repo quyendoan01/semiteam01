@@ -16,12 +16,12 @@
                 <div style="display:flex; align-items: center;">
                     <form action="{{route('search_bill')}}" method="GET">
                         @csrf
-                    <div class="input-group" style="width: 300px; height: 40px; margin:16px 0px; display:inline-flex">
+                        <div class="input-group" style="width: 300px; height: 40px; margin:16px 0px; display:inline-flex">
                             <button type="submit" class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></button>
                             <input type="text" name="search_bill_text" class="form-control" placeholder="Type here...">
-                    </div>
-                    <input type="date" name="search_bill_date" style="height:100%;padding:8px;border-radius:8px;border:1px solid gray;margin:auto">
-                </form>
+                        </div>
+                        <input type="date" name="search_bill_date" style="height:100%;padding:8px;border-radius:8px;border:1px solid gray;margin:auto">
+                    </form>
                     <div class="btn home-filter-sort" style="border:none">
                         <p class="home-filter-sort-btn"
                             style="width: 300px; height: 1px; margin:11px 5px; display:inline-flex; align-items: center">
@@ -105,7 +105,6 @@
             </div>
         </div>
     </div>
-
     <nav>
         <ul class="pagination justify-content-center">
             <!-- Previous Page Link -->

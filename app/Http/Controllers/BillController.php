@@ -21,8 +21,7 @@ use Illuminate\Support\Facades\File;
 
 class BillController extends Controller
 {
-    public function bill()
-    {
+    public function bill(){
         $bill = DB::table('bill')
            ->select(DB::raw('MONTH(bill_payment) as month'), DB::raw('COUNT(*) as count'))
            ->groupBy(DB::raw('MONTH(bill_payment)'))
@@ -30,8 +29,7 @@ class BillController extends Controller
            ->paginate(1);
         return view('bill.bill', compact('bill'));
     }
-    public function add_bill()
-    {
+    public function add_bill(){
         $product = Product::latest()->paginate(16);
         $customer = Customer::all();
         $bidcount = DB::table('bill')->count();
@@ -45,9 +43,7 @@ class BillController extends Controller
         return view('bill.add', compact('product', 'customer', 'bid'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
-
-    public function store_bill(Request $request)
-    {
+    public function store_bill(Request $request){
         if ($request->isMethod('POST')) {
 
             if ($request->type == 0) {
@@ -133,8 +129,7 @@ class BillController extends Controller
 
         }
     }
-    public function show_bill($id)
-    {
+    public function show_bill($id){
         $bill = Bill::find($id);
         $cus_id = DB::table('customer')->where('id', $bill->cus_id)->first();
         $user_id = DB::table('users')->where('id', $bill->user_id)->first();
@@ -142,7 +137,6 @@ class BillController extends Controller
 
         return view('bill.show', compact('bill', 'cus_id', 'user_id', 'pro_bill'));
     }
-
     public function sort_bill($id){
         $bill = DB::table('bill')
            ->select(DB::raw('MONTH(bill_payment) as month'), DB::raw('COUNT(*) as count'))

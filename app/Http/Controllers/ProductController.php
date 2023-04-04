@@ -13,8 +13,7 @@ use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
-    public function product()
-    {
+    public function product(){
         $product = Product::latest()->paginate(8);
         $category= Category::all();
 
@@ -23,17 +22,12 @@ class ProductController extends Controller
         return view('product.product', compact('product','category'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
-
-
-
-    public function create()
-    {
+    public function create(){
 
         $category = Category::all();
         return view('product.add', compact('category'));
     }
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         if ($request->isMethod('POST')) {
             $validator = Validator::make($request->all(), [
                 'name' => 'required'
@@ -73,8 +67,7 @@ class ProductController extends Controller
                 ->with('success', 'product created successfully');
         }
     }
-    public function show($id)
-    {
+    public function show($id){
         $product = Product::find($id);
         $pro_count = DB::table('pro-bill')->where('pro_id', $id)->get();
         $pro_sold = 0;
@@ -90,15 +83,13 @@ class ProductController extends Controller
 
         return view('product.show', compact('product','pro_sold'));
     }
-    public function edit($id)
-    {
+    public function edit($id){
 
         $category = Category::all();
         $product = Product::with('category')->find($id);
         return view('product.add', ['product' => $product, 'category' => $category]);
     }
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id){
         if ($request->isMethod('POST')) {
             $validator = Validator::make($request->all(), [
                 'name' => 'required'
@@ -140,8 +131,7 @@ class ProductController extends Controller
             }
         }
     }
-    public function destroy($id)
-    {
+    public function destroy($id){
         $product = Product::find($id);
         $image_path = "/image/product/.$product->image";
         if (File::exists($image_path)) {
@@ -152,8 +142,7 @@ class ProductController extends Controller
         return redirect()->route('product')
             ->with('success', 'Delete successful');
     }
-    public function search(Request $request)
-    {
+    public function search(Request $request){
         $query = $request->search;
         $category= Category::all();
         $product = Product::where('pro_name', 'LIKE', "%$query%")
@@ -161,16 +150,13 @@ class ProductController extends Controller
 
         return view('product.product', compact('product','category'));
     }
-    public function sortByPrice($order = 'asc')
-    {
+    public function sortByPrice($order = 'asc'){
         $product = Product::orderBy('unit_price', $order)->paginate(8);
         $category= Category::all();
 
         return view('product.product', compact('product','category'));
     }
-
-    public function filter($cat = 'cat')
-    {
+    public function filter($cat = 'cat'){
         $category= Category::all();
 
         $cate = DB::table('category')->where('cat_name','=',"$cat")->first();
@@ -180,6 +166,4 @@ class ProductController extends Controller
 
         return view('product.product', compact('product','category'));
     }
-
-
 }

@@ -11,19 +11,16 @@ use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
-    public function index()
-    {
+    public function index(){
         $categories = Category::latest()->paginate(5);
 
         return view('category.index', compact('categories'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
-    public function create()
-    {
+    public function create(){
         return view('cat.create');
     }
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         if ($request->isMethod('POST')) {
             $validator = Validator::make($request->all(), [
                 'name' => 'required'
@@ -40,18 +37,15 @@ class CategoryController extends Controller
                 ->with('success', 'Category create successfully');
         }
     }
-    public function show($id)
-    {
+    public function show($id){
         $category = Category::find($id);
         return view('category.show', ['category' => $category]);
     }
-    public function edit($id)
-    {
+    public function edit($id){
         $category = Category::find($id);
         return view('category.edit', ['category' => $category]);
     }
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id){
         if ($request->isMethod('POST')){
             $validator = Validator::make($request->all(),[
                 'name' => 'required'
@@ -74,8 +68,7 @@ class CategoryController extends Controller
             }
         }
     }
-    public function destroy(Request $request)
-    {
+    public function destroy(Request $request){
         $category = Category::select('id')->where('cat_name', $request->category)->first();
         $product = Product::where('cat_id', $category)->get();
         foreach ($product as $pro){

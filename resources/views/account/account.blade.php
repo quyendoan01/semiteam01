@@ -2,8 +2,6 @@
 
 @section('content')
     <div class="container-fluid">
-
-
         <div class="container-fluid">
             <form action="{{ route('account.search') }}" method="GET">
                 @csrf
@@ -20,9 +18,10 @@
                         <div style="display:inline">
                         <a href="{{ url('account/add') }}"> <button style="" type="button"
                             class="add_staff btn btn-secondary">Add account</button>
-                    </a></div>
-                    </form>
+                    </a>
                 </div>
+            </form>
+        </div>
 
 
 
