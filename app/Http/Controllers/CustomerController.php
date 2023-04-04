@@ -50,10 +50,10 @@ public function add_cus_auth(Request $request)
                 $newCus->cus_phone = $request->cus_phone;
                 $newCus->cus_address = $request->cus_address;
                 $newCus->save();
-                return redirect()->route('lc')
+                return redirect()->route('customer.lc')
                     ->with('success', 'Add successful!');
             } else {
-                return redirect()->route('lc')
+                return redirect()->route('customer.lc')
                     ->with('danger', 'Fail!');
             }
 
@@ -61,7 +61,7 @@ public function add_cus_auth(Request $request)
     }
 
     public function cus_edit_auth(Request $request)
-    {   
+    {
         if ($request->isMethod('POST')) {
             $cus = Customer::find($request->id);
             if ($cus != null) {

@@ -24,6 +24,9 @@ use App\Http\Controllers\CustomerController;
 Route::get('', function () {
     return view('auth.login');
 });
+
+//Auth::routes();
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::get('/register', [UserController::class, 'register'])->name('register');
@@ -41,6 +44,8 @@ Route::get('/user_information', [UserController::class, 'user_information'])->na
 Route::get('/auth/userinfo', [UserController::class, 'userinfo'])->name('userinfor');
 Route::post('/userinfor_edit', [UserController::class, 'user_edit_info'])->name('infor.edit');
 
+
+
 Route::get('/product', [ProductController::class, 'product'])->name('product');
 Route::get('/product/add', [ProductController::class, 'create'])->name('product.create');
 Route::get('/product/delete/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
@@ -53,6 +58,7 @@ Route::get('/product/sort-by-price/{order?}', [ProductController::class, 'sortBy
 Route::get('/product/filter/{cat?}', [ProductController::class,'filter'])->name('product.filter');
 Route::post('/user/edit', [CategoryController::class, 'edit'])->name('user.edit');
 
+
 Route::get('/category', [CategoryController::class, 'index'])->name('category');
 Route::get('/category/add', [CategoryController::class, 'create'])->name('category.create');
 Route::post('/category/delete', [CategoryController::class, 'destroy'])->name('category.destroy');
@@ -60,6 +66,7 @@ Route::get('/category/edit', [CategoryController::class, 'edit'])->name('categor
 Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
 Route::get('/category/show/{id}', [CategoryController::class, 'show'])->name('category.show');
 Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
+
 
 Route::get('/account', [UserController::class, 'account'])->name('account')->middleware('auth');
 Route::get('/account/add', [UserController::class, 'add_account'])->name('add_account');
@@ -69,11 +76,14 @@ Route::post('/account/add/auth', [UserController::class, 'add_acc_auth'])->name(
 Route::post('/account/edit/auth',[UserController::class,'user_edit_auth'])->name('user_edit_auth')->middleware('auth');
 Route::get('/account/search', [UserController::class,'search'])->name('account.search');
 
+
+
 Route::get('/bill', [BillController::class, 'bill'])->name('bill')->middleware('auth');
 Route::get('/bill/add', [BillController::class, 'add_bill'])->name('add_bill');
 Route::post('/bill/store', [BillController::class, 'store_bill'])->name('store_bill');
 Route::get('/bill/show/{id}', [BillController::class, 'show_bill'])->name('show_bill');
 Route::get('/bill/sort/{id}', [BillController::class, 'sort_bill'])->name('sort_bill');
 Route::get('/bill/search', [BillController::class, 'search_bill'])->name('search_bill');
+
 
 Route::get('/search', 'UserController@search');
