@@ -185,7 +185,10 @@ public function userinfor()
                 $currentuser->user_name = $request->user_name;
                 $currentuser->user_email = $request->user_email;
                 $currentuser->role = $request->role;
-                $currentuser->password = $request->password;
+                if($currentuser->password != $request->password)
+                {
+                    $currentuser->password = $request->password;
+                }
                 $currentuser->save();
                 return redirect()->route('userinfor')
                     ->with('success', 'Account update successful!');
@@ -195,7 +198,8 @@ public function userinfor()
             }
         }
     }
-
+    
+    
 
 
     // public function search_cus(Request $request){

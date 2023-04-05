@@ -94,9 +94,11 @@ public function add_cus_auth(Request $request)
 
     public function search_cus(Request $request)
     {
-        $query = $request->input('query');
-        $cus = Customer::where('name', 'like', "%{$query}%")->get();
-        return view('lc', ['cus' => $cus]);
+        $query = $request->search_cus;
+        $listcustomer = Customer::where('cus_name', 'LIKE', "%{$query}%")
+                            ->orWhere('cus_email', 'LIKE', "%{$query}%")
+                            ->get();
+        return view('customer.lc', compact('listcustomer'));
     }
 
 }

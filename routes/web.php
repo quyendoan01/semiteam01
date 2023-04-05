@@ -43,6 +43,7 @@ Route::get('/userinfo', [UserController::class, 'userinfo'])->name('userinfo');
 Route::get('/user_information', [UserController::class, 'user_information'])->name('user_information');
 Route::get('/auth/userinfo', [UserController::class, 'userinfo'])->name('userinfor');
 Route::post('/userinfor_edit', [UserController::class, 'user_edit_info'])->name('infor.edit');
+Route::get('/cus/search', [CustomerController::class,'search_cus'])->name('cus.search');
 
 
 
