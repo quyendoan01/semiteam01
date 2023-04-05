@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="test123">
-                            <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                            <img  src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt=""/>
                             
                            
                         </div>
@@ -49,6 +49,12 @@
                 <tr>
                     <th class="headtb">Your Role</th>
                     <td><input class="form-control" type="text" name="role" readonly value="{{Auth::user()->role}}"></td>
+                    
+                    
+                </tr>
+                <tr>
+                    <th class="headtb">Change password</th>
+                    <td><input class="form-control" type="password" name="password"  value="{{Auth::user()->password}}"></td>
                     
                     
                 </tr>
