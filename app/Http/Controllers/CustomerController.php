@@ -88,7 +88,7 @@ public function add_cus_auth(Request $request)
         Bill::where('cus_id', $id)->delete();
         $cus->delete();
 
-        return redirect()->route('lc')
+        return redirect()->route('customer.lc')
             ->with('success', 'Delete account successful!');
     }
 

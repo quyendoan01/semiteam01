@@ -54,18 +54,18 @@
                             <th scope="col">Bill ID</th>
                             <th scope="col">Type</th>
                             <th scope="col">Date payment</th>
-                            <th scope="col">Customer Name</th>
+                            <th scope="col">Client Name</th>
                             <th scope="col">Staff Name</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($bill as $bil)
                         @if (isset($id))
-                        <input type="hidden" value="{{$bill_id = DB::table('bill')->where(DB::raw('MONTH(bill_payment)'), $bil->month)->where('type', $id)->get()}}">
+                        <input type="hidden" value="{{$bill_id = DB::table('bill')->where(DB::raw('MONTH(bill_payment)'), $bil->month)->where('type', $id)->orderBy('bill_payment','desc')->get()}}">
                         @elseif (isset($bill_info))
-                        <input type="hidden" value="{{$bill_id = DB::table('bill')->where('id', 'LIKE', "%$bill_info%")->where('bill_payment', 'LIKE', "%$bill_date%")->get()}}">
+                        <input type="hidden" value="{{$bill_id = DB::table('bill')->where('id', 'LIKE', "%$bill_info%")->where('bill_payment', 'LIKE', "%$bill_date%")->orderBy('bill_payment','desc')->get()}}">
                         @else
-                        <input type="hidden" value="{{$bill_id = DB::table('bill')->where(DB::raw('MONTH(bill_payment)'), $bil->month)->get()}}">
+                        <input type="hidden" value="{{$bill_id = DB::table('bill')->where(DB::raw('MONTH(bill_payment)'), $bil->month)->orderBy('bill_payment','desc')->get()}}">
                         @endif
                             @foreach ($bill_id as $bi)
                             <tr>

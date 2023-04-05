@@ -23,7 +23,7 @@
                         <option value="1" style="color:forestgreen">Export</option>
                     </select>
                     <p style="display:inline;float:right">Type<span style="color:red">*</span>: </p><br><br>
-                    <p style="display:inline">Customer: </p>
+                    <p style="display:inline">Client: </p>
                     <select class="select2" placeholder="Search..." style="width: 50%" name="cus_id" id="mySelect" required>
                         @foreach ($customer as $cus)
                             <option value="{{ $cus->id }}">{{ $cus->cus_name }}</option>

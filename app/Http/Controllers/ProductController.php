@@ -132,15 +132,25 @@ class ProductController extends Controller
         }
     }
     public function destroy($id){
-        $product = Product::find($id);
-        $image_path = "/image/product/.$product->image";
-        if (File::exists($image_path)) {
-            File::delete($image_path);
+        try{
+            $product = Product::find($id);
+            $image_path = "/image/product/.$product->image";
+            if (File::exists($image_path)) {
+                File::delete($image_path);
+            }
+            $image = DB::table('image')->where('pro_id','=',"$product->id")->delete();
+            $product->delete();
+            return redirect()->route('product')
+                ->with('success', 'Delete successful');
         }
-        $image = DB::table('image')->where('pro_id','=',"$product->id")->delete();
-        $product->delete();
-        return redirect()->route('product')
-            ->with('success', 'Delete successful');
+        catch (\Exception $e){
+            $newImage = new Image();
+            $newImage->img_infor = "noname.jpg";
+            $newImage->pro_id = $id;
+            $newImage->save();
+            return redirect()->route('product')
+            ->with('failed', 'Delete failed');
+        }
     }
     public function search(Request $request){
         $query = $request->search;

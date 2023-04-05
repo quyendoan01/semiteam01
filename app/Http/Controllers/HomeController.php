@@ -90,7 +90,7 @@ class HomeController extends Controller
         $export_5_days = [];
 
         for ($i = 0; $i <= 4; $i++) {
-            $now = Carbon::today();
+            $now = Carbon::today('GMT+7');
             $theday = $now->subDays($i)->format('Y-m-d');
             $lastFiveDays_total = DB::table('bill')->where('bill_payment', $theday)->get();
             $lastFiveDays_import = DB::table('bill')->where('bill_payment', $theday)->where('type', 0)->get();
@@ -165,7 +165,6 @@ class HomeController extends Controller
             ->orderBy('count','desc')
             ->limit(4)
             ->get();
-
 
 
         return view('welcome', compact('client_today','client_yesterday',

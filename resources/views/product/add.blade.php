@@ -34,7 +34,6 @@
                             value="@if(isset($product)){{$product->unit_price}}@endif">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Quantity </label>
                         <input name="quantity" type="hidden" class="form-control" id="exampleFormControlInput1"
                             placeholder="Quantity of product" required
                             @if(isset($product))
