@@ -85,6 +85,22 @@ class UserController extends Controller
         if ($request->isMethod('POST')) {
             $user = DB::table('users')->where('user_email', $request->user_email)->first();
 
+            if ($request->hasFile('user_avt')) {
+
+                $file = $request->file('user_avt');
+    
+                $path = public_path('/UserAvatar');
+    
+                $fileName = time() . '_' . $file->getClientOriginalName();
+    
+                $file->move($path, $fileName);
+    
+                } else {
+    
+                $fileName = 'noname.jpg';
+    
+            }
+
             if (!$user) {
                 $newUser = new User();
                 $newUser->user_email = $request->user_email;
@@ -92,6 +108,7 @@ class UserController extends Controller
                 $newUser->user_name = $request->user_name;
                 $newUser->password = $request->password;
                 $newUser->role = $request->role;
+                $newUser->user_avt = $fileName;
                 $newUser->save();
                 return redirect()->route('account')
                     ->with('success', 'Add account successful!');
@@ -118,6 +135,18 @@ class UserController extends Controller
     public function user_edit_auth(Request $request)
     {
         if ($request->isMethod('POST')) {
+            $fileName="";
+            if ($request->hasFile('user_avt')) {
+
+                $file = $request->file('user_avt');
+    
+                $path = public_path('/UserAvatar');
+    
+                $fileName = time() . '_' . $file->getClientOriginalName();
+    
+                $file->move($path, $fileName);
+    
+                } 
             $user = User::find($request->id);
             if ($user != null) {
                 $user->user_full_name = $request->user_full_name;
@@ -125,6 +154,9 @@ class UserController extends Controller
                 $user->user_email = $request->user_email;
                 $user->role = $request->role;
                 $user->password = $request->password;
+                if($fileName){
+                    $user->user_avatar = $fileName;
+                }
                 $user->save();
                 return redirect()->route('account')
                     ->with('success', 'Account update successful!');
@@ -177,14 +209,32 @@ public function userinfor()
     }
 
     public function user_edit_info(Request $request)
+    
     {
-        if ($request->isMethod('POST')) {
+
+    if ($request->isMethod('POST')) {
+        $fileName="";
+        if ($request->hasFile('user_avt')) {
+
+            $file = $request->file('user_avt');
+
+            $path = public_path('/UserAvatar');
+
+            $fileName = time() . '_' . $file->getClientOriginalName();
+
+            $file->move($path, $fileName);
+
+            } 
+        
             $currentuser = User::find($request->id);
             if ($currentuser != null) {
                 $currentuser->user_full_name = $request->user_full_name;
                 $currentuser->user_name = $request->user_name;
                 $currentuser->user_email = $request->user_email;
                 $currentuser->role = $request->role;
+                if($fileName){
+                    $currentuser->user_avt = $fileName;
+                }
                 if($currentuser->password != $request->password)
                 {
                     $currentuser->password = $request->password;

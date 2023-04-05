@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="test123">
-                            <img  src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt=""/>
+                            <img  src="{{url('/')}}/UserAvatar/{{Auth::user()->user_avt}}" alt=""/>
                             
                            
                         </div>
@@ -55,6 +55,12 @@
                 <tr>
                     <th class="headtb">Change password</th>
                     <td><input class="form-control" type="password" name="password"  value="{{Auth::user()->password}}"></td>
+                    
+                    
+                </tr>
+                <tr>
+                    <th class="headtb">Your Avatar</th>
+                    <td><input class="form-control" type="file" name="user_avt" value="{{Auth::user()->user_avatar}}"></td>
                     
                     
                 </tr>
